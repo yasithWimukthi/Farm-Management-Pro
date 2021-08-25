@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "937878089354",
+    "project_id": "farm-management-pro",
+    "storage_bucket": "farm-management-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937878089354:android:3a08c99611117d50618773",
+        "android_client_info": {
+          "package_name": "com.farmmanagementpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937878089354-683vhqb572gk1i112v16nn67b82qikgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6CP8g4GTUiJTcbCdWgtasVQ5yocpHMPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937878089354-683vhqb572gk1i112v16nn67b82qikgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
