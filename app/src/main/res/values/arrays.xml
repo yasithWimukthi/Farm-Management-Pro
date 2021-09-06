@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="id_activityScreenTitles">
+        <item></item>
+        <item>Dashboard</item>
+        <item/>
+        <item>Logout</item>
+    </string-array>
+
+    <array name="id_activityScreenIcons">
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>0</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+    </array>
+</resources>
