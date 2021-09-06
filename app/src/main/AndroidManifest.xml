@@ -11,7 +11,8 @@
         android:theme="@style/Theme.FarmManagementPro">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                    android:theme="@style/AppTheme.NoActionBar"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

@@ -7,7 +7,7 @@ public abstract class DrawerItem<T extends DrawerAdapter.ViewHolder> {
     public abstract T createViewHolder(ViewGroup parent);
     public abstract void bindViewHolder(T holder);
 
-    public DrawerItem<T>setChecked(boolean checked) {
+    public DrawerItem<T> setChecked(boolean checked) {
         this.isChecked = checked;
         return this;
     }
