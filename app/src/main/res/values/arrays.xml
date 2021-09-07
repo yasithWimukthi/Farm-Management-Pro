@@ -3,11 +3,27 @@
     <string-array name="id_activityScreenTitles">
         <item></item>
         <item>Dashboard</item>
-        <item/>
+        <item>My Animals</item>
+        <item>Animal Events</item>
+        <item>Farm Tasks</item>
+        <item>Fertilizer History</item>
+        <item>Medical Cabinet</item>
+        <item>Feed History</item>
+        <item>My Machinery</item>
+        <item>Sprays</item>
         <item>Logout</item>
     </string-array>
 
     <array name="id_activityScreenIcons">
+        <item>0</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_account_outline_grey600_24dp</item>
         <item>@drawable/ic_account_outline_grey600_24dp</item>
         <item>@drawable/ic_account_outline_grey600_24dp</item>
         <item>0</item>
