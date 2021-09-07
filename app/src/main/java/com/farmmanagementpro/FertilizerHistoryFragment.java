@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class AnimalEventFragment extends Fragment {
+public class FertilizerHistoryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.animal_events_fragment,container,false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fertilizer_history_fragment,container,false);
         return root;
     }
 }
