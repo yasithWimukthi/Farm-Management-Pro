@@ -27,7 +27,15 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
     private static final int POS_CLOSE = 0;
     private static final int POS_DASHBOARD = 1;
-    private static final int POS_LOGOUT = 3;
+    private static final int POS_MY_ANIMALS = 2;
+    private static final int POS_ANIMAL_EVENTS = 3;
+    private static final int POS_FARM_TASKS= 4;
+    private static final int POS_FERTILIZER_HISTORY = 5;
+    private static final int POS_MEDICAL_CABINET = 6;
+    private static final int POS_FEED_HISTORY = 7;
+    private static final int POS_MY_MACHINERY = 8;
+    private static final int POS_SPRAYS = 9;
+    private static final int POS_LOGOUT = 10;
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
@@ -72,6 +80,14 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
                 createItemFor(POS_CLOSE),
                 createItemFor(POS_DASHBOARD),
+                createItemFor(POS_MY_ANIMALS),
+                createItemFor(POS_ANIMAL_EVENTS),
+                createItemFor(POS_FARM_TASKS),
+                createItemFor(POS_FERTILIZER_HISTORY),
+                createItemFor(POS_MEDICAL_CABINET),
+                createItemFor(POS_FEED_HISTORY),
+                createItemFor(POS_MY_MACHINERY),
+                createItemFor(POS_SPRAYS),
                 new SpaceItem(260),
                 createItemFor(POS_LOGOUT)
         ));
@@ -128,8 +144,34 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         if (position == POS_DASHBOARD){
-            DashboardFragment dashboard_fragment = new DashboardFragment();
-            transaction.replace(R.id.container, dashboard_fragment);
+            DashboardFragment dashboardFragment = new DashboardFragment();
+            transaction.replace(R.id.container, dashboardFragment);
+        }else if(position == POS_MY_ANIMALS){
+            MyAnimalsFragment animals = new MyAnimalsFragment();
+            transaction.replace(R.id.container, animals);
+        }else if(position == POS_ANIMAL_EVENTS){
+            AnimalEventFragment events = new AnimalEventFragment();
+            transaction.replace(R.id.container, events);
+        }else if(position == POS_FARM_TASKS){
+            FarmTasksFragment farmTasks = new FarmTasksFragment();
+            transaction.replace(R.id.container, farmTasks);
+        }else if(position == POS_FERTILIZER_HISTORY){
+            FertilizerHistoryFragment fertilizer = new FertilizerHistoryFragment();
+            transaction.replace(R.id.container, fertilizer);
+        }else if(position == POS_MEDICAL_CABINET){
+            MedicalCabinetFragment medical = new MedicalCabinetFragment();
+            transaction.replace(R.id.container, medical);
+        }else if(position == POS_FEED_HISTORY){
+            FeedHistoryFragment feedHistoryFragment = new FeedHistoryFragment();
+            transaction.replace(R.id.container, feedHistoryFragment);
+        }else if(position == POS_MY_MACHINERY){
+            MyMachineryFragment machines = new MyMachineryFragment();
+            transaction.replace(R.id.container, machines);
+        }else if(position == POS_SPRAYS){
+            SpraysFragment sprays = new SpraysFragment();
+            transaction.replace(R.id.container, sprays);
+        }else{
+            finish();
         }
 
         slideRootNav.closeMenu();

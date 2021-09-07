@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:background="@color/white"
     tools:context=".MainActivity">
 
@@ -20,11 +20,12 @@
             app:titleTextColor="@color/green" />
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
+        android:name="com.farmmanagementpro.DashboardFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
+
 
 </LinearLayout>
