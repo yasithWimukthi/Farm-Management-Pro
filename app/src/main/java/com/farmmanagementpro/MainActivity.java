@@ -2,6 +2,7 @@ package com.farmmanagementpro;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -12,10 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -36,11 +40,13 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private static final int POS_MY_MACHINERY = 8;
     private static final int POS_SPRAYS = 9;
     private static final int POS_LOGOUT = 10;
+    private static final String TAG = "Main Activity";
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
 
     private SlidingRootNav slideRootNav;
+    private BottomNavigationView bottomNavBar;
 
 
 
@@ -49,19 +55,17 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //
-        //
         getSupportActionBar().hide();
 //        Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
+        bottomNavBar = (BottomNavigationView) findViewById(R.id.bottom_nav);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         try{
             setSupportActionBar(toolbar);
         }catch(IllegalStateException e){
-
+            Log.e(TAG, "onCreate: "+ e.getMessage() );
         }
-
 
         slideRootNav = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
@@ -100,6 +104,34 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         list.setAdapter(adapter);
 
         adapter.setSelected(POS_DASHBOARD);
+
+
+        /**
+         * bottom navigation bar
+         */
+       // bottomNavBar.setSelectedItemId(R.id.bottom_home);
+        bottomNavBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+                switch (item.getItemId()) {
+                    case R.id.bottom_home:
+                        DashboardFragment dashboardFragment = new DashboardFragment();
+                        transaction.replace(R.id.container, dashboardFragment);
+                        break;
+
+                    case R.id.bottom_settings:
+                        break;
+
+                    case R.id.bottom_user:
+                        break;
+                }
+                transaction.addToBackStack(null);
+                transaction.commit();
+                return true;
+            }
+        });
     }
 
     private DrawerItem createItemFor(int position){
