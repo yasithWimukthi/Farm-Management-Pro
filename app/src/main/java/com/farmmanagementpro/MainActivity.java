@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 createItemFor(POS_FEED_HISTORY),
                 createItemFor(POS_MY_MACHINERY),
                 createItemFor(POS_SPRAYS),
-                new SpaceItem(260),
+                new SpaceItem(150),
                 createItemFor(POS_LOGOUT)
         ));
 
