@@ -18,13 +18,13 @@
         />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/choose_gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/choose_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
