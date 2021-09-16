@@ -9,11 +9,12 @@ public class Animal {
     private String breed;
     private String sire;
     private String note;
+    private String image;
 
     public Animal() {
     }
 
-    public Animal(String animalId, String status, String registeredDate, String dob, String gender, String breed, String sire, String note) {
+    public Animal(String animalId, String status, String registeredDate, String dob, String gender, String breed, String sire, String note,String image) {
         this.animalId = animalId;
         this.status = status;
         this.registeredDate = registeredDate;
@@ -22,6 +23,7 @@ public class Animal {
         this.breed = breed;
         this.sire = sire;
         this.note = note;
+        this.image = image;
     }
 
     public String getAnimalId() {
@@ -86,5 +88,13 @@ public class Animal {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

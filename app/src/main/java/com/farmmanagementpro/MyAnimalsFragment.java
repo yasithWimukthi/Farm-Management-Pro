@@ -13,11 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.farmmanagementpro.modals.Animal;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -53,6 +57,7 @@ public class MyAnimalsFragment extends Fragment {
         bottomDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addAnimal();
                 showDialog();
             }
         });
@@ -69,9 +74,9 @@ public class MyAnimalsFragment extends Fragment {
         chooseGalleryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                galleryIntent.setType("image/*");
-                startActivityForResult(galleryIntent,GALLERY_CODE);
+//                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+//                galleryIntent.setType("image/*");
+//                startActivityForResult(galleryIntent,GALLERY_CODE);
             }
         });
 
@@ -92,6 +97,33 @@ public class MyAnimalsFragment extends Fragment {
                 //doctorDp.setImageURI(imageUri);
             }
         }
+    }
+
+    private void addAnimal(){
+        Animal animal = new Animal();
+        animal.setAnimalId("1");
+        animal.setStatus("test");
+        animal.setBreed("breed");
+        animal.setDob("dob");
+        animal.setGender("gender");
+        animal.setImage("image");
+        animal.setNote("note");
+        animal.setRegisteredDate("reg date");
+        animal.setSire("sire");
+
+        db.collection("animals").document().set(animal)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getContext(),"Added Successfully",Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
 }
