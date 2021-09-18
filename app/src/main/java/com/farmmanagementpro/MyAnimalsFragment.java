@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.farmmanagementpro.modals.Animal;
@@ -53,6 +54,7 @@ public class MyAnimalsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bottomDialog = view.findViewById(R.id.bottom_dialog);
+
 
         bottomDialog.setOnClickListener(new View.OnClickListener() {
             @Override

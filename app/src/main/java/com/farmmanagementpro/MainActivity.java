@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
     private SlidingRootNav slideRootNav;
     private BottomNavigationView bottomNavBar;
-
+    Toolbar toolbar;
 
 
     @Override
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         //setSupportActionBar(toolbar);
         setContentView(R.layout.activity_main);
         bottomNavBar = (BottomNavigationView) findViewById(R.id.bottom_nav);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         try{
             setSupportActionBar(toolbar);
         }catch(IllegalStateException e){
@@ -176,30 +176,39 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         if (position == POS_DASHBOARD){
+            toolbar.setTitle("Dashboard");
             DashboardFragment dashboardFragment = new DashboardFragment();
             transaction.replace(R.id.container, dashboardFragment);
         }else if(position == POS_MY_ANIMALS){
+            toolbar.setTitle("My Animals");
             MyAnimalsFragment animals = new MyAnimalsFragment();
             transaction.replace(R.id.container, animals);
         }else if(position == POS_ANIMAL_EVENTS){
+            toolbar.setTitle("Animal Events");
             AnimalEventFragment events = new AnimalEventFragment();
             transaction.replace(R.id.container, events);
         }else if(position == POS_FARM_TASKS){
+            toolbar.setTitle("Farm Task");
             FarmTasksFragment farmTasks = new FarmTasksFragment();
             transaction.replace(R.id.container, farmTasks);
         }else if(position == POS_FERTILIZER_HISTORY){
+            toolbar.setTitle("Fertilizer History");
             FertilizerHistoryFragment fertilizer = new FertilizerHistoryFragment();
             transaction.replace(R.id.container, fertilizer);
         }else if(position == POS_MEDICAL_CABINET){
+            toolbar.setTitle("Medical Cabinet");
             MedicalCabinetFragment medical = new MedicalCabinetFragment();
             transaction.replace(R.id.container, medical);
         }else if(position == POS_FEED_HISTORY){
+            toolbar.setTitle("Feed History");
             FeedHistoryFragment feedHistoryFragment = new FeedHistoryFragment();
             transaction.replace(R.id.container, feedHistoryFragment);
         }else if(position == POS_MY_MACHINERY){
+            toolbar.setTitle("My Machinery");
             MyMachineryFragment machines = new MyMachineryFragment();
             transaction.replace(R.id.container, machines);
         }else if(position == POS_SPRAYS){
+            toolbar.setTitle("Sprays");
             SpraysFragment sprays = new SpraysFragment();
             transaction.replace(R.id.container, sprays);
         }else{
