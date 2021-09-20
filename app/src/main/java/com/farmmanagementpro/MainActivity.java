@@ -13,9 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import android.view.View;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
+
 import android.view.WindowManager;
 
 
@@ -24,8 +27,6 @@ import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.Arrays;
-
-import io.grpc.Context;
 
 public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener{
 
@@ -217,6 +218,19 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         slideRootNav.closeMenu();
         transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void InsertMedicineFragmentChange(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        MedicalIsertFragment fragment = new MedicalIsertFragment();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+    public void MedicalCabinet(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        MedicalCabinetFragment  fragment = new MedicalCabinetFragment();
+        transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
 }
