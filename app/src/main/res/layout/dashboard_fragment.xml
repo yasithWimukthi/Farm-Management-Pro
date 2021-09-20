@@ -74,7 +74,7 @@
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="@drawable/machine"
+            android:background="@drawable/machines_btn"
             android:text="Button" />
 
         <ImageButton
@@ -83,7 +83,7 @@
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="@drawable/sprays_btn"
+            android:background="@drawable/sprays_bnt_green"
             android:text="Button" />
 
 
