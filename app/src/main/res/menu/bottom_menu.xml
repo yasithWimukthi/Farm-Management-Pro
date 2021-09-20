@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/bottom_settings"
+        android:icon="@drawable/ic_settings_foreground"
+        android:title="Settings" />
     <item
         android:id="@+id/bottom_home"
         android:title="Home"
@@ -7,14 +13,7 @@
         />
 
     <item
-        android:id="@+id/bottom_settings"
-        android:title="Settings"
-        android:icon="@drawable/ic_home"
-        />
-
-    <item
         android:id="@+id/bottom_user"
-        android:title="Profile"
-        android:icon="@drawable/ic_home"
-        />
+        android:icon="@drawable/ic_person_foreground"
+        android:title="Profile" />
 </menu>
