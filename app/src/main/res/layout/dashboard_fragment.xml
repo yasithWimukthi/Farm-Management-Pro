@@ -1,194 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/google_pixel_4__4xl__1"
-    android:verticalScrollbarPosition="defaultPosition">
+    android:background="@drawable/home_bg">
 
-    <Button
-        android:id="@+id/BtnMyAnimals"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:foreground="@drawable/group_82"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BtnAnimalHistory"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13"
-        android:onClick="MedicalCabinet"/>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20sp"
+        android:columnCount="2"
+        android:rowCount="4">
 
-    <TextView
-        android:id="@+id/lblMyAnimals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/my_animals"
-        app:layout_constraintEnd_toEndOf="@+id/BtnMyAnimals"
-        app:layout_constraintStart_toStartOf="@+id/BtnMyAnimals"
-        app:layout_constraintTop_toBottomOf="@+id/BtnMyAnimals" />
+        <ImageButton
+            android:id="@+id/BtnMyAnimals"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/my_animals_btn"
+            android:text="Button" />
 
-    <Button
-        android:id="@+id/BtnAnimalHistory"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:foreground="@drawable/group_73"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/BtnMyAnimals"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        <ImageButton
+            android:id="@+id/BtnAnimalHistory"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/animal_history"
+            android:text="Button" />
 
-    <TextView
-        android:id="@+id/lblAnimalHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/animal_history"
-        app:layout_constraintEnd_toEndOf="@+id/BtnAnimalHistory"
-        app:layout_constraintStart_toStartOf="@+id/BtnAnimalHistory"
-        app:layout_constraintTop_toBottomOf="@+id/BtnAnimalHistory" />
+        <ImageButton
+            android:id="@+id/BtnMedicine"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/medicine_btn"
+            android:onClick="MedicalCabinet"
+            android:text="Button" />
 
-    <Button
-        android:id="@+id/BtnMedicine"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:foreground="@drawable/group_74"
-        android:onClick="MedicalCabinet"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/lblMedicine"
-        app:layout_constraintEnd_toStartOf="@+id/BtnFeed"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386"
-        tools:ignore="UsingOnClickInXml" />
+        <ImageButton
+            android:id="@+id/BtnFeed"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/feed_btn"
+            android:text="Button" />
 
-    <TextView
-        android:id="@+id/lblMedicine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/medicine"
-        app:layout_constraintEnd_toEndOf="@+id/BtnMedicine"
-        app:layout_constraintStart_toStartOf="@+id/BtnMedicine"
-        app:layout_constraintTop_toBottomOf="@+id/BtnMedicine" />
+        <ImageButton
+            android:id="@+id/BtnFertilizer"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/fertilizer_btn"
+            android:text="Button" />
 
-    <Button
-        android:id="@+id/BtnFeed"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:foreground="@drawable/group_75"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/BtnMedicine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386" />
+        <ImageButton
+            android:id="@+id/BtnFarmTask"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/farm_task_btn"
+            android:text="Button" />
 
-    <TextView
-        android:id="@+id/lblFeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/feeds"
-        app:layout_constraintEnd_toEndOf="@+id/BtnFeed"
-        app:layout_constraintStart_toStartOf="@+id/BtnFeed"
-        app:layout_constraintTop_toBottomOf="@+id/BtnFeed" />
+        <ImageButton
+            android:id="@+id/BtnMachines"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/machine"
+            android:text="Button" />
 
-    <Button
-        android:id="@+id/BtnFertilizer"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:foreground="@drawable/group_76"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BtnFarmTask"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.651" />
+        <ImageButton
+            android:id="@+id/BtnSprays"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/sprays_btn"
+            android:text="Button" />
 
-    <TextView
-        android:id="@+id/lblFertilizer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/fertilizer"
-        app:layout_constraintEnd_toEndOf="@+id/BtnFertilizer"
-        app:layout_constraintStart_toStartOf="@+id/BtnFertilizer"
-        app:layout_constraintTop_toBottomOf="@+id/BtnFertilizer" />
 
-    <Button
-        android:id="@+id/BtnFarmTask"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:backgroundTintMode="add"
-        android:foreground="@drawable/component_22__1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/BtnFertilizer"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
-
-    <TextView
-        android:id="@+id/lblFarmTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/farm_tasks"
-        app:layout_constraintEnd_toEndOf="@+id/BtnFarmTask"
-        app:layout_constraintStart_toStartOf="@+id/BtnFarmTask"
-        app:layout_constraintTop_toBottomOf="@+id/BtnFarmTask" />
-
-    <Button
-        android:id="@+id/BtnSprays"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:foreground="@drawable/group_79"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.768"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblFarmTask"
-        app:layout_constraintVertical_bias="0.48" />
-
-    <TextView
-        android:id="@+id/lblSprays"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/sprays"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/lblMachines"
-        app:layout_constraintTop_toBottomOf="@+id/BtnSprays" />
-
-    <Button
-        android:id="@+id/BtnMachines"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:foreground="@drawable/group_78"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BtnSprays"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblFertilizer"
-        app:layout_constraintVertical_bias="0.413" />
-
-    <TextView
-        android:id="@+id/lblMachines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/machines"
-        app:layout_constraintEnd_toStartOf="@+id/BtnSprays"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BtnMachines" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </GridLayout>
+</ScrollView>
