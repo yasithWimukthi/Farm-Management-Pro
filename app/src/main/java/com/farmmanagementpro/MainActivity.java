@@ -20,6 +20,7 @@ import android.view.WindowManager;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -212,6 +213,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
             SpraysFragment sprays = new SpraysFragment();
             transaction.replace(R.id.container, sprays);
         }else{
+            FirebaseAuth.getInstance().signOut();
             finish();
         }
 
