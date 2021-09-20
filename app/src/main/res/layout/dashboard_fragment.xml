@@ -17,7 +17,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.13"
+        android:onClick="MedicalCabinet"/>
 
     <TextView
         android:id="@+id/lblMyAnimals"
@@ -56,13 +57,15 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:foreground="@drawable/group_74"
+        android:onClick="MedicalCabinet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/lblMedicine"
         app:layout_constraintEnd_toStartOf="@+id/BtnFeed"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.387" />
+        app:layout_constraintVertical_bias="0.386"
+        tools:ignore="UsingOnClickInXml" />
 
     <TextView
         android:id="@+id/lblMedicine"

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MedicalIsertFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="198dp">
+
+        <ImageButton
+            android:id="@+id/uploadImageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/upload_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="511dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Image"
+            android:textAlignment="center"
+            android:textColor="@color/theameGreen"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewPuchaseDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:text="Purchase Date"
+            android:textColor="@color/theameGreen"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/theameGreen"
+            android:ems="10"
+            android:inputType="date"
+            android:soundEffectsEnabled="false"
+            android:textColor="@color/textColorSecondary"
+            android:textColorHint="@color/theameGreen"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:text="Name"
+            android:textColor="@color/theameGreen"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/theameGreen"
+            android:ems="10"
+            android:inputType="text"
+            android:soundEffectsEnabled="false"
+            android:textColor="@color/textColorSecondary"
+            android:textColorHint="@color/theameGreen" />
+
+        <TextView
+            android:id="@+id/textViewQty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:text="Quantity"
+            android:textColor="@color/theameGreen"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextQty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/theameGreen"
+            android:ems="10"
+            android:inputType="number"
+            android:soundEffectsEnabled="false"
+            android:textColor="@color/textColorSecondary"
+            android:textColorHint="@color/theameGreen" />
+
+        <TextView
+            android:id="@+id/textViewpPrescribeBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:text="Prescribed By"
+            android:textColor="@color/theameGreen"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextPrescribeBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/theameGreen"
+            android:ems="10"
+            android:inputType="text"
+            android:soundEffectsEnabled="false"
+            android:textColor="@color/textColorSecondary"
+            android:textColorHint="@color/theameGreen" />
+
+        <TextView
+            android:id="@+id/textViewSupplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:text="Supplier"
+            android:textColor="@color/theameGreen"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextSupplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/theameGreen"
+            android:ems="10"
+            android:inputType="text"
+            android:soundEffectsEnabled="false"
+            android:textColor="@color/textColorSecondary"
+            android:textColorHint="@color/theameGreen" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/resetBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/theameGreen"
+            android:shadowColor="@color/black"
+            android:text="Reset"
+            android:textColor="@color/white"
+            app:cornerRadius="5dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:shadowColor="@color/black"
+            android:text="Save"
+            android:textColor="@color/theameGreen"
+            app:cornerRadius="5dp"
+            app:strokeColor="@color/theameGreen"
+            app:strokeWidth="2dp" />
+    </LinearLayout>
+
+
+</LinearLayout>
