@@ -2,6 +2,7 @@ package com.farmmanagementpro;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -12,10 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
 import android.view.View;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.Window;
+
 import android.view.WindowManager;
 
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -34,12 +41,14 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private static final int POS_MY_MACHINERY = 8;
     private static final int POS_SPRAYS = 9;
     private static final int POS_LOGOUT = 10;
+    private static final String TAG = "Main Activity";
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
 
     private SlidingRootNav slideRootNav;
-
+    private BottomNavigationView bottomNavBar;
+    Toolbar toolbar;
 
 
     @Override
@@ -47,19 +56,17 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //
-        //
         getSupportActionBar().hide();
 //        Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        bottomNavBar = (BottomNavigationView) findViewById(R.id.bottom_nav);
+        toolbar = findViewById(R.id.toolbar);
         try{
             setSupportActionBar(toolbar);
         }catch(IllegalStateException e){
-
+            Log.e(TAG, "onCreate: "+ e.getMessage() );
         }
-
 
         slideRootNav = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
@@ -86,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 createItemFor(POS_FEED_HISTORY),
                 createItemFor(POS_MY_MACHINERY),
                 createItemFor(POS_SPRAYS),
-                new SpaceItem(260),
+                new SpaceItem(150),
                 createItemFor(POS_LOGOUT)
         ));
 
@@ -98,6 +105,34 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         list.setAdapter(adapter);
 
         adapter.setSelected(POS_DASHBOARD);
+
+
+        /**
+         * bottom navigation bar
+         */
+       // bottomNavBar.setSelectedItemId(R.id.bottom_home);
+        bottomNavBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+                switch (item.getItemId()) {
+                    case R.id.bottom_home:
+                        DashboardFragment dashboardFragment = new DashboardFragment();
+                        transaction.replace(R.id.container, dashboardFragment);
+                        break;
+
+                    case R.id.bottom_settings:
+                        break;
+
+                    case R.id.bottom_user:
+                        break;
+                }
+                transaction.addToBackStack(null);
+                transaction.commit();
+                return true;
+            }
+        });
     }
 
     private DrawerItem createItemFor(int position){
@@ -142,30 +177,39 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         if (position == POS_DASHBOARD){
+            toolbar.setTitle("Dashboard");
             DashboardFragment dashboardFragment = new DashboardFragment();
             transaction.replace(R.id.container, dashboardFragment);
         }else if(position == POS_MY_ANIMALS){
+            toolbar.setTitle("My Animals");
             MyAnimalsFragment animals = new MyAnimalsFragment();
             transaction.replace(R.id.container, animals);
         }else if(position == POS_ANIMAL_EVENTS){
+            toolbar.setTitle("Animal Events");
             AnimalEventFragment events = new AnimalEventFragment();
             transaction.replace(R.id.container, events);
         }else if(position == POS_FARM_TASKS){
+            toolbar.setTitle("Farm Task");
             FarmTasksFragment farmTasks = new FarmTasksFragment();
             transaction.replace(R.id.container, farmTasks);
         }else if(position == POS_FERTILIZER_HISTORY){
+            toolbar.setTitle("Fertilizer History");
             FertilizerHistoryFragment fertilizer = new FertilizerHistoryFragment();
             transaction.replace(R.id.container, fertilizer);
         }else if(position == POS_MEDICAL_CABINET){
+            toolbar.setTitle("Medical Cabinet");
             MedicalCabinetFragment medical = new MedicalCabinetFragment();
             transaction.replace(R.id.container, medical);
         }else if(position == POS_FEED_HISTORY){
+            toolbar.setTitle("Feed History");
             FeedHistoryFragment feedHistoryFragment = new FeedHistoryFragment();
             transaction.replace(R.id.container, feedHistoryFragment);
         }else if(position == POS_MY_MACHINERY){
+            toolbar.setTitle("My Machinery");
             MyMachineryFragment machines = new MyMachineryFragment();
             transaction.replace(R.id.container, machines);
         }else if(position == POS_SPRAYS){
+            toolbar.setTitle("Sprays");
             SpraysFragment sprays = new SpraysFragment();
             transaction.replace(R.id.container, sprays);
         }else{
