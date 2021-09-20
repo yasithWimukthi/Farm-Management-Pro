@@ -16,8 +16,11 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:titleTextColor="@color/green" />
+            android:background="@color/green"
+            android:textAlignment="center"
+            android:transitionGroup="false"
+            app:title="Dashboard"
+            app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
