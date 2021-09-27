@@ -253,6 +253,12 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
+    public void InsertFeedFragmentChange(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FeedInsert  fragment = new FeedInsert();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
 
 
 
