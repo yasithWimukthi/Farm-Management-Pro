@@ -9,27 +9,28 @@
     android:orientation="vertical"
     tools:context=".MedicalIsertFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <TextView
-            android:id="@+id/addNewMedicine"
+            android:id="@+id/addNewFeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Medicine"
+            android:text="Add New Feed"
             android:textAlignment="center"
             android:textColor="@color/theameGreen"
             android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textStyle="bold" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="198dp">
 
             <ImageButton
-                android:id="@+id/eventImageView"
+                android:id="@+id/uploadImageBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/upload_image"
@@ -128,30 +129,6 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/textViewpPrescribeBy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingTop="10dp"
-                android:text="Prescribed By"
-                android:textColor="@color/theameGreen"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTextPrescribeBy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/theameGreen"
-                android:ems="10"
-                android:inputType="text"
-                android:soundEffectsEnabled="false"
-                android:textColor="@color/textColorSecondary"
-                android:textColorHint="@color/theameGreen" />
-
-            <TextView
                 android:id="@+id/textViewSupplier"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -164,6 +141,29 @@
 
             <EditText
                 android:id="@+id/editTextSupplier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+            <TextView
+                android:id="@+id/textViewpDesctiption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Description"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextPrescribeBy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

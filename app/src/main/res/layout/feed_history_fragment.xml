@@ -60,6 +60,7 @@
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         android:drawableTop="@drawable/insert_icon"
+        android:onClick="InsertFeedFragmentChange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.971"
