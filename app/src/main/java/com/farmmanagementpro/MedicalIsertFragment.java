@@ -33,7 +33,7 @@ public class MedicalIsertFragment extends Fragment  {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.medical_insert_fragment, container, false);
-        imageButton = v.findViewById(R.id.uploadImageBtn);
+        imageButton = v.findViewById(R.id.eventImageView);
         purchaseDateEt = v.findViewById(R.id.editTextDate);
         nameEt = v.findViewById(R.id.editTextName);
         qtyEt = v.findViewById(R.id.editTextQty);
