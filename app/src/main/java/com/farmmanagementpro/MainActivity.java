@@ -221,16 +221,39 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         transaction.commit();
     }
 
+    /*Implemented by shalitha*/
+
+    public void MyAnimal(View view){
+        this.onItemSelected(POS_MY_ANIMALS);
+    }
+    public void AnimalEvent(View view){
+        this.onItemSelected(POS_ANIMAL_EVENTS);
+    }
+    public void MedicalCabinet(View view){
+        this.onItemSelected(POS_MEDICAL_CABINET);
+    }
+    public void FeedHistory(View view){
+        this.onItemSelected(POS_FEED_HISTORY);
+    }
+    public void Fertilizer(View view){
+        this.onItemSelected(POS_FERTILIZER_HISTORY);
+    }
+    public void FarmTask(View view){
+        this.onItemSelected(POS_FARM_TASKS);
+    }
+    public void MyMachines(View view){
+        this.onItemSelected(POS_MY_MACHINERY);
+    }
+    public void Sprays(View view){
+        this.onItemSelected(POS_SPRAYS);
+    }
     public void InsertMedicineFragmentChange(View view){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         MedicalIsertFragment fragment = new MedicalIsertFragment();
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
-    public void MedicalCabinet(View view){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        MedicalCabinetFragment  fragment = new MedicalCabinetFragment();
-        transaction.replace(R.id.container, fragment);
-        transaction.commit();
-    }
+
+
+
 }

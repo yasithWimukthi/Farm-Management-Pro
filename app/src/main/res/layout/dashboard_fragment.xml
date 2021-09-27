@@ -20,6 +20,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/my_animals_btn"
+            android:onClick="MyAnimal"
             android:text="Button" />
 
         <ImageButton
@@ -29,6 +30,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/animal_history"
+            android:onClick="AnimalEvent"
             android:text="Button" />
 
         <ImageButton
@@ -48,6 +50,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/feed_btn"
+            android:onClick="FeedHistory"
             android:text="Button" />
 
         <ImageButton
@@ -57,6 +60,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/fertilizer_btn"
+            android:onClick="Fertilizer"
             android:text="Button" />
 
         <ImageButton
@@ -66,6 +70,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/farm_task_btn"
+            android:onClick="FarmTask"
             android:text="Button" />
 
         <ImageButton
@@ -75,6 +80,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/machines_btn"
+            android:onClick="MyMachines"
             android:text="Button" />
 
         <ImageButton
@@ -84,6 +90,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/sprays_bnt_green"
+            android:onClick="Sprays"
             android:text="Button" />
 
 
