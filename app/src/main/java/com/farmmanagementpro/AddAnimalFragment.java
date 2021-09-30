@@ -21,10 +21,19 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import com.farmmanagementpro.helper.HelperMethod;
+import com.farmmanagementpro.modals.Animal;
+import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
 
 public class AddAnimalFragment extends Fragment {
@@ -42,6 +51,14 @@ public class AddAnimalFragment extends Fragment {
     private Button resetBtn;
     private ImageView animalImageButton;
     private Uri imageUri;
+
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseUser currentUser;
+
+    // FIRESTORE CONNECTION
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private StorageReference storageReference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +78,9 @@ public class AddAnimalFragment extends Fragment {
         saveBtn = view.findViewById(R.id.saveBtn);
         resetBtn = view.findViewById(R.id.resetBtn);
         animalImageButton = view.findViewById(R.id.animalImageButton);
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+
 
         animalImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +127,8 @@ public class AddAnimalFragment extends Fragment {
                     String gender = genderEditText.getText().toString().trim();
                     String breed = breedEditText.getText().toString().trim();
                     String sire = sireEditText.getText().toString().trim();
+
+                    addAnimalImage(status,regDate,animalId,dob,gender,breed,sire);
                 }
             }
         });
@@ -149,7 +171,63 @@ public class AddAnimalFragment extends Fragment {
         }
     }
 
-    public void addAnimal(String status, String regDate, String animalId, String dob, String gender, String breed, String sire){
+    public void addAnimalImage(String status, String regDate, String animalId, String dob, String gender, String breed, String sire){
+        Animal animal = new Animal();
+        animal.setSire(sire);
+        animal.setRegisteredDate(regDate);
+        animal.setGender(gender);
+        animal.setDob(dob);
+        animal.setStatus(status);
+        animal.setAnimalId(animalId);
+        animal.setBreed(breed);
 
+        if (imageUri != null){
+            StorageReference filePath = storageReference.child("doctors").child(animalId);
+            filePath.putFile(imageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            filePath.getDownloadUrl()
+                                    .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            animal.setImage(uri.toString());
+                                            addAnimalDetails(animal);
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            HelperMethod.createErrorToast(getActivity(),"Error happened while uploading image.");
+                                        }
+                                    });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            HelperMethod.createErrorToast(getActivity(),"Error happened while uploading image.");
+                        }
+                    });
+        }else{
+            animal.setImage("Not Added");
+            addAnimalDetails(animal);
+        }
+    }
+
+    public void addAnimalDetails(Animal animal){
+        db.collection("animals").document().set(animal)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        HelperMethod.createErrorToast(getActivity(),"Error happened. Try again.");
+                    }
+                });
     }
 }
