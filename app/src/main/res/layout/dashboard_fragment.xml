@@ -31,7 +31,6 @@
             android:layout_margin="10dp"
             android:onClick="navigateToAnimalEvent"
             android:background="@drawable/animal_history"
-            android:onClick="AnimalEvent"
             android:text="Button" />
 
         <ImageButton

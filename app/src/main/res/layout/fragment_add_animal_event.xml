@@ -35,18 +35,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewPuchaseDate"
+                android:id="@+id/eventDateTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Purchase Date"
+                android:text="Event Date"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/eventDateEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -60,18 +60,18 @@
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/textViewName"
+                android:id="@+id/AnimalIdTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Name"
+                android:text="Animal ID"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/AnimalIdEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -84,42 +84,18 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/textViewQty"
+                android:id="@+id/eventNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Quantity"
+                android:text="Event Name"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextQty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/theameGreen"
-                android:ems="10"
-                android:inputType="number"
-                android:soundEffectsEnabled="false"
-                android:textColor="@color/textColorSecondary"
-                android:textColorHint="@color/theameGreen" />
-
-            <TextView
-                android:id="@+id/textViewpPrescribeBy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingTop="10dp"
-                android:text="Prescribed By"
-                android:textColor="@color/theameGreen"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTextPrescribeBy"
+                android:id="@+id/eventNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -132,18 +108,18 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/textViewSupplier"
+                android:id="@+id/stockBullTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Supplier"
+                android:text="Al/Stock Bull"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextSupplier"
+                android:id="@+id/stockBullEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -151,6 +127,30 @@
                 android:backgroundTint="@color/theameGreen"
                 android:ems="10"
                 android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/notesTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Notes"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/notesEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="textMultiLine"
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen" />
