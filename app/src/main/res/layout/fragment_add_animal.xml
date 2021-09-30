@@ -29,7 +29,7 @@
             android:layout_height="198dp">
 
             <ImageButton
-                android:id="@+id/eventImageView"
+                android:id="@+id/animalImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/upload_image"
