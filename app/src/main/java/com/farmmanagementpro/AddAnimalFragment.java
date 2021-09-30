@@ -2,6 +2,8 @@ package com.farmmanagementpro;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -11,6 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +22,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.farmmanagementpro.helper.HelperMethod;
 import com.sdsmdg.tastytoast.TastyToast;
@@ -35,7 +40,7 @@ public class AddAnimalFragment extends Fragment {
     private EditText sireEditText;
     private Button saveBtn;
     private Button resetBtn;
-    private ImageButton animalImageButton;
+    private ImageView animalImageButton;
     private Uri imageUri;
 
     @Override
@@ -124,15 +129,22 @@ public class AddAnimalFragment extends Fragment {
                 startActivityForResult(galleryIntent,GALLERY_CODE);
             }
         });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == GALLERY_CODE && resultCode == 1){
+        if(requestCode == GALLERY_CODE && resultCode == -1){
             if(data != null){
                 imageUri = data.getData();
                 animalImageButton.setImageURI(imageUri);
+                Log.d("Image uri", imageUri.toString());
             }
         }
     }
