@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 public class AddAnimalEvent extends Fragment {
 
@@ -19,8 +20,4 @@ public class AddAnimalEvent extends Fragment {
         return inflater.inflate(R.layout.fragment_add_animal_event, container, false);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-    }
 }

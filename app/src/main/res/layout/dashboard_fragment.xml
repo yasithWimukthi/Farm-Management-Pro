@@ -28,6 +28,7 @@
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="10dp"
+            android:onClick="navigateToAnimalEvent"
             android:background="@drawable/animal_history"
             android:text="Button" />
 

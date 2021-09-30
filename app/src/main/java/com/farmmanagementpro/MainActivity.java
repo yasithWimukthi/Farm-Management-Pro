@@ -233,4 +233,18 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
+
+    public void navigateToAnimalEvent(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        AnimalEventFragment animalEventFragment = new AnimalEventFragment();
+        transaction.replace(R.id.container, animalEventFragment);
+        transaction.commit();
+    }
+
+    public void navigateToAddAnimalEvent(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        AddAnimalEvent addAnimalEvent = new AddAnimalEvent();
+        transaction.replace(R.id.container, addAnimalEvent);
+        transaction.commit();
+    }
 }

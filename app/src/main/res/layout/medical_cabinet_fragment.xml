@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.019" />
 
     <Button
-        android:id="@+id/searchBtnMedical"
+        android:id="@+id/search_animal_event_btn"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="54dp"
         android:layout_height="32dp"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.03" />
 
     <Button
-        android:id="@+id/InserBtn"
+        android:id="@+id/insert_animal_event_btn"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="68dp"
         android:layout_height="73dp"

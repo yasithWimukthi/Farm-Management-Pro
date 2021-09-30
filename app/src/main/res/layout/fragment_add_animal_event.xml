@@ -22,7 +22,6 @@
                 android:id="@+id/eventImageView"
                 android:layout_width="301dp"
                 android:layout_height="159dp"
-                android:background=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
