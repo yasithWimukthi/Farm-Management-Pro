@@ -21,11 +21,11 @@
         android:id="@+id/choose_gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Open Gallery" />
 
     <Button
         android:id="@+id/choose_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Open Camera" />
 </LinearLayout>
