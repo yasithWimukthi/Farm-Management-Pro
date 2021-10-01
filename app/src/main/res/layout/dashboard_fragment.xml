@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/my_animals_btn"
-            android:onClick="MyAnimal"
+            android:onClick="navigateToMyAnimal"
             android:text="Button" />
 
         <ImageButton

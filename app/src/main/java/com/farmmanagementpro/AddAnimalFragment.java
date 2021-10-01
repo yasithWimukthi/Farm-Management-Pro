@@ -99,6 +99,7 @@ public class AddAnimalFragment extends Fragment {
                 genderEditText.setText("");
                 breedEditText.setText("");
                 sireEditText.setText("");
+                animalImageButton.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
             }
         });
 
@@ -106,19 +107,54 @@ public class AddAnimalFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(statusEditText.getText().toString().trim())){
-                    HelperMethod.createErrorToast(getActivity(),"Please enter status !");
+                    TastyToast.makeText(
+                            getActivity(),
+                            "Please enter status !",
+                            TastyToast.LENGTH_LONG,
+                            TastyToast.ERROR
+                    );
                 }else if(TextUtils.isEmpty(regDateEditText.getText().toString().trim())){
-                    HelperMethod.createErrorToast(getActivity(),"Please enter register date !");
+                    TastyToast.makeText(
+                            getActivity(),
+                            "Please enter register date !",
+                            TastyToast.LENGTH_LONG,
+                            TastyToast.ERROR
+                    );
                 }else if(TextUtils.isEmpty(animalIdEditText.getText().toString().trim())){
-                    HelperMethod.createErrorToast(getActivity(),"Please enter animal ID !");
+                    TastyToast.makeText(
+                            getActivity(),
+                            "Please enter animal ID !",
+                            TastyToast.LENGTH_LONG,
+                            TastyToast.ERROR
+                    );
                 }else if(TextUtils.isEmpty(dobEditText.getText().toString().trim())){
-                    HelperMethod.createErrorToast(getActivity(),"Please enter DOB !");
+                    TastyToast.makeText(
+                            getActivity(),
+                            "Please enter DOB !",
+                            TastyToast.LENGTH_LONG,
+                            TastyToast.ERROR
+                    );
                 }else if(TextUtils.isEmpty(genderEditText.getText().toString().trim())){
-                    HelperMethod.createErrorToast(getActivity(),"Please enter gender !");
+                    TastyToast.makeText(
+                            getActivity(),
+                            "Please enter gender !",
+                            TastyToast.LENGTH_LONG,
+                            TastyToast.ERROR
+                    );
                 }else if(TextUtils.isEmpty(breedEditText.getText().toString().trim())){
-                    HelperMethod.createErrorToast(getActivity(),"Please enter breed !");
+                    TastyToast.makeText(
+                            getActivity(),
+                            "Please enter breed !",
+                            TastyToast.LENGTH_LONG,
+                            TastyToast.ERROR
+                    );
                 }else if(TextUtils.isEmpty(sireEditText.getText().toString().trim())){
-                    HelperMethod.createErrorToast(getActivity(),"Please enter sire !");
+                    TastyToast.makeText(
+                            getActivity(),
+                            "Please enter sire !",
+                            TastyToast.LENGTH_LONG,
+                            TastyToast.ERROR
+                    );
                 }else{
                     String status = statusEditText.getText().toString().trim();
                     String regDate = regDateEditText.getText().toString().trim();
@@ -182,7 +218,7 @@ public class AddAnimalFragment extends Fragment {
         animal.setBreed(breed);
 
         if (imageUri != null){
-            StorageReference filePath = storageReference.child("doctors").child(animalId);
+            StorageReference filePath = storageReference.child("animals").child(animalId);
             filePath.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -220,13 +256,25 @@ public class AddAnimalFragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
+                        statusEditText.setText("");
+                        regDateEditText.setText("");
+                        animalIdEditText.setText("");
+                        dobEditText.setText("");
+                        genderEditText.setText("");
+                        breedEditText.setText("");
+                        sireEditText.setText("");
+                        animalImageButton.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        HelperMethod.createErrorToast(getActivity(),"Error happened. Try again.");
+                        TastyToast.makeText(
+                                getActivity(),
+                                "Error happened. Try again.",
+                                TastyToast.LENGTH_LONG,
+                                TastyToast.ERROR
+                        );
                     }
                 });
     }
