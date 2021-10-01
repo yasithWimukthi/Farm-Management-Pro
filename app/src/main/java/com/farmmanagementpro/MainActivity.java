@@ -235,6 +235,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
     public void navigateToAnimalEvent(View view){
+        toolbar.setTitle("Animal Events");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         AnimalEventFragment animalEventFragment = new AnimalEventFragment();
         transaction.replace(R.id.container, animalEventFragment);
@@ -242,6 +243,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
     public void navigateToAddAnimalEvent(View view){
+        toolbar.setTitle("Animal Events");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         AddAnimalEvent addAnimalEvent = new AddAnimalEvent();
         transaction.replace(R.id.container, addAnimalEvent);
@@ -256,6 +258,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
     public void navigateToMyAnimal(View view){
+        toolbar.setTitle("My Animals");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         MyAnimalsFragment myAnimalsFragment = new MyAnimalsFragment();
         transaction.replace(R.id.container, myAnimalsFragment);
