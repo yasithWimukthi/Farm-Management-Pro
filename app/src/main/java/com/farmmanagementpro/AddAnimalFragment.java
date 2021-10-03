@@ -19,6 +19,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,11 +42,11 @@ public class AddAnimalFragment extends Fragment {
 
     private static final int GALLERY_CODE = 1;
 
-    private EditText statusEditText;
+    private AutoCompleteTextView statusEditText;
     private EditText regDateEditText;
     private EditText animalIdEditText;
     private EditText dobEditText;
-    private EditText genderEditText;
+    private AutoCompleteTextView genderEditText;
     private EditText breedEditText;
     private EditText sireEditText;
     private Button saveBtn;
@@ -79,8 +81,32 @@ public class AddAnimalFragment extends Fragment {
         resetBtn = view.findViewById(R.id.resetBtn);
         animalImageButton = view.findViewById(R.id.animalImageButton);
 
+        statusEditText.setThreshold(2);
+        genderEditText.setThreshold(2);
+
         storageReference = FirebaseStorage.getInstance().getReference();
 
+        final String [] gender = new String[] {"Male","Female"};
+        final String [] status = new String[] {"Born on Farm","Purchased","Sold","Death on Farm"};
+
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_dropdown_item_1line,gender);
+        genderEditText.setAdapter(genderAdapter);
+        ArrayAdapter<String> statusAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_dropdown_item_1line,status);
+        statusEditText.setAdapter(statusAdapter);
+
+        genderEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                genderEditText.showDropDown();
+            }
+        });
+
+        statusEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statusEditText.showDropDown();
+            }
+        });
 
         animalImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
