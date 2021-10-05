@@ -14,6 +14,7 @@ import com.farmmanagementpro.R;
 import com.farmmanagementpro.modals.Animal;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -46,7 +47,13 @@ public class AnimalListRecyclerAdapter extends RecyclerView.Adapter<AnimalListRe
         holder.gender.setText(animal.getGender());
         holder.registerDate.setText(animal.getRegisteredDate());
 
+        Picasso.get()
+                .load(animal.getImage())
+                .placeholder(R.drawable.vaccine)
+                .fit()
+                .into(holder.animalImage);
     }
+
 
     @Override
     public int getItemCount() {

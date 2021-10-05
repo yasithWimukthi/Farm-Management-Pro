@@ -8,6 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/medical_card"
         tools:ignore="UselessParent">
 
@@ -129,45 +130,45 @@
             android:text="@string/supplier"
             android:textColor="@color/black" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/sire"-->
-<!--            android:layout_width="120dp"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:layout_toEndOf="@+id/imageView"-->
-<!--            android:text="Sire"-->
-<!--            android:textColor="@color/black" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/sire"-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="20dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_toEndOf="@+id/imageView"-->
+        <!--            android:text="Sire"-->
+        <!--            android:textColor="@color/black" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/sireValue"-->
-<!--            android:layout_width="120dp"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:layout_toEndOf="@+id/sire"-->
-<!--            android:text="@string/supplier"-->
-<!--            android:textColor="@color/black" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/sireValue"-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_toEndOf="@+id/sire"-->
+        <!--            android:text="@string/supplier"-->
+        <!--            android:textColor="@color/black" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/status"-->
-<!--            android:layout_width="120dp"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:layout_toEndOf="@+id/imageView"-->
-<!--            android:text="Status"-->
-<!--            android:textColor="@color/black" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/status"-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="20dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_toEndOf="@+id/imageView"-->
+        <!--            android:text="Status"-->
+        <!--            android:textColor="@color/black" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/statusValue"-->
-<!--            android:layout_width="120dp"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:layout_toEndOf="@+id/status"-->
-<!--            android:text="@string/supplier"-->
-<!--            android:textColor="@color/black" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/statusValue"-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_toEndOf="@+id/status"-->
+        <!--            android:text="@string/supplier"-->
+        <!--            android:textColor="@color/black" />-->
     </RelativeLayout>
 
 </RelativeLayout>
