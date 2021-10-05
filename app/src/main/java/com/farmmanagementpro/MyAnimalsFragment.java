@@ -41,7 +41,6 @@ import java.util.List;
 public class MyAnimalsFragment extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private StorageReference storageReference;
     private CollectionReference animalsCollection = db.collection("animals");
 
     private RecyclerView recyclerview;
