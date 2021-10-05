@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/medical_card"
+        tools:ignore="UselessParent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:id="@+id/animalImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/vaccine" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/animalId"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Animal ID"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/animalIdValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/animalId"
+            android:text="12/12/2021"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/breed"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Breed"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/breedValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/breed"
+            android:text="medicine"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="DOB"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/dobValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@+id/dob"
+            android:text="12"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Gender"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/genderValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="80dp"
+            android:layout_toEndOf="@+id/gender"
+            android:text="@string/prescribed_by"
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/regDate"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Register Date"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/regDateValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="100dp"
+            android:layout_toEndOf="@+id/regDate"
+            android:text="@string/supplier"
+            android:textColor="@color/black" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/sire"-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="20dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_toEndOf="@+id/imageView"-->
+        <!--            android:text="Sire"-->
+        <!--            android:textColor="@color/black" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/sireValue"-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_toEndOf="@+id/sire"-->
+        <!--            android:text="@string/supplier"-->
+        <!--            android:textColor="@color/black" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/status"-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="20dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_toEndOf="@+id/imageView"-->
+        <!--            android:text="Status"-->
+        <!--            android:textColor="@color/black" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/statusValue"-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:layout_marginTop="100dp"-->
+        <!--            android:layout_toEndOf="@+id/status"-->
+        <!--            android:text="@string/supplier"-->
+        <!--            android:textColor="@color/black" />-->
+    </RelativeLayout>
+
+</RelativeLayout>

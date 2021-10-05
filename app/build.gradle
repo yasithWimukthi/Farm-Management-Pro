@@ -43,4 +43,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.yarolegovich:sliding-root-nav:1.1.1'
     implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
