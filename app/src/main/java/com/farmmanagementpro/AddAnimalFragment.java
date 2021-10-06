@@ -16,6 +16,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -94,17 +95,20 @@ public class AddAnimalFragment extends Fragment {
         ArrayAdapter<String> statusAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_dropdown_item_1line,status);
         statusEditText.setAdapter(statusAdapter);
 
-        genderEditText.setOnClickListener(new View.OnClickListener() {
+        genderEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
                 genderEditText.showDropDown();
+                return true;
             }
         });
 
-        statusEditText.setOnClickListener(new View.OnClickListener() {
+
+        statusEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
                 statusEditText.showDropDown();
+                return  true;
             }
         });
 

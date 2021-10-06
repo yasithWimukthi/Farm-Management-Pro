@@ -105,13 +105,14 @@
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/eventNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/theameGreen"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
                 android:ems="10"
                 android:inputType="text"
                 android:soundEffectsEnabled="false"
