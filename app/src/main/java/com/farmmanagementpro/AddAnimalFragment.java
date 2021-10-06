@@ -282,7 +282,7 @@ public class AddAnimalFragment extends Fragment {
     }
 
     public void addAnimalDetails(Animal animal){
-        db.collection("animals").document().set(animal)
+        db.collection("animals").document(animal.getAnimalId()).set(animal)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

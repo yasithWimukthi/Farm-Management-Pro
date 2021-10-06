@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +27,7 @@ import com.farmmanagementpro.UI.AnimalListRecyclerAdapter;
 import com.farmmanagementpro.modals.Animal;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -47,6 +49,9 @@ public class MyAnimalsFragment extends Fragment {
     private AnimalListRecyclerAdapter animalListAdapter;
 
     private List<Animal> animalsList;
+    private ItemTouchHelper.SimpleCallback simpleCallback;
+    private Animal deletedAnimal;
+    private int position;
 
     @Nullable
     @Override
@@ -66,6 +71,55 @@ public class MyAnimalsFragment extends Fragment {
 
         getAnimalList();
 
+        simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                String animalId = animalsList.get(position).getAnimalId();
+                deletedAnimal = animalsList.get(position);
+
+                switch (direction) {
+                    case ItemTouchHelper.LEFT:
+                        animalsList.remove(position);
+                        animalListAdapter.notifyItemRemoved(position);
+                        removeAnimal(animalId);
+                        break;
+                    case ItemTouchHelper.RIGHT:
+                        break;
+                }
+            }
+        };
+
+    }
+
+    private void removeAnimal(String animalId) {
+        animalsCollection.document(animalId)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Snackbar.make(recyclerview,"Do you want to undo",Snackbar.LENGTH_LONG)
+                                .setAction("Undo", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        animalsCollection.document(deletedAnimal.getAnimalId()).set(deletedAnimal);
+                                        animalsList.add(position,deletedAnimal);
+                                        animalListAdapter.notifyItemInserted(position);
+                                    }
+                                }).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
     }
 
     private void getAnimalList(){
@@ -81,6 +135,9 @@ public class MyAnimalsFragment extends Fragment {
                             animalListAdapter = new AnimalListRecyclerAdapter(getActivity(),animalsList);
                             recyclerview.setAdapter(animalListAdapter);
                             animalListAdapter.notifyDataSetChanged();
+
+                            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+                            itemTouchHelper.attachToRecyclerView(recyclerview);
                         }
                     }
                 })
