@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,7 +28,7 @@ public class AddAnimalEvent extends Fragment {
 
     private EditText eventDateEditText;
     private EditText animalIdEditText;
-    private EditText eventNameEditText;
+    private AutoCompleteTextView eventNameEditText;
     private EditText stockBullEditText;
     private EditText notesEditText;
     private Button saveBtn;
@@ -50,6 +53,20 @@ public class AddAnimalEvent extends Fragment {
         saveBtn = view.findViewById(R.id.saveBtn);
         resetBtn = view.findViewById(R.id.resetBtn);
 
+        eventNameEditText.setThreshold(2);
+
+        final String [] events = new String[] {"Heat Detection","Serves","Weight Check"};
+
+        ArrayAdapter<String> eventNameAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_dropdown_item_1line,events);
+        eventNameEditText.setAdapter(eventNameAdapter);
+
+        eventNameEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                eventNameEditText.showDropDown();
+                return true;
+            }
+        });
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
