@@ -12,8 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -26,20 +24,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
 import com.farmmanagementpro.helper.HelperMethod;
 import com.farmmanagementpro.modals.Animal;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
+import com.squareup.picasso.Picasso;
 
-public class AddAnimalFragment extends Fragment {
+public class UpdateAnimalFragment extends Fragment {
 
     private static final int GALLERY_CODE = 1;
 
@@ -50,27 +51,34 @@ public class AddAnimalFragment extends Fragment {
     private AutoCompleteTextView genderEditText;
     private EditText breedEditText;
     private EditText sireEditText;
-    private Button saveBtn;
+    private Button updateBtn;
     private Button resetBtn;
     private ImageView animalImageButton;
     private Uri imageUri;
 
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
-    private FirebaseUser currentUser;
-
-    // FIRESTORE CONNECTION
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference animalsCollection = db.collection("animals");
     private StorageReference storageReference;
+
+    private String animalId;
+    private String imageUrl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_animal, container, false);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            animalId = bundle.getString("animalId", ""); // Key, default value
+        }
+        return inflater.inflate(R.layout.fragment_update_animal, container, false);
     }
 
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         statusEditText = view.findViewById(R.id.statusEditText);
         regDateEditText = view.findViewById(R.id.regDateEditText);
         animalIdEditText = view.findViewById(R.id.animalIdEditText);
@@ -78,7 +86,7 @@ public class AddAnimalFragment extends Fragment {
         genderEditText = view.findViewById(R.id.genderEditText);
         breedEditText = view.findViewById(R.id.breedEditText);
         sireEditText = view.findViewById(R.id.sireEditText);
-        saveBtn = view.findViewById(R.id.saveBtn);
+        updateBtn = view.findViewById(R.id.updateBtn);
         resetBtn = view.findViewById(R.id.resetBtn);
         animalImageButton = view.findViewById(R.id.animalImageButton);
 
@@ -102,7 +110,6 @@ public class AddAnimalFragment extends Fragment {
                 return true;
             }
         });
-
 
         statusEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -133,111 +140,25 @@ public class AddAnimalFragment extends Fragment {
             }
         });
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(statusEditText.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter status !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else if(TextUtils.isEmpty(regDateEditText.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter register date !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else if(TextUtils.isEmpty(animalIdEditText.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter animal ID !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else if(TextUtils.isEmpty(dobEditText.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter DOB !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else if(TextUtils.isEmpty(genderEditText.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter gender !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else if(TextUtils.isEmpty(breedEditText.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter breed !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else if(TextUtils.isEmpty(sireEditText.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter sire !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else{
-                    String status = statusEditText.getText().toString().trim();
-                    String regDate = regDateEditText.getText().toString().trim();
-                    String animalId = animalIdEditText.getText().toString().trim();
-                    String dob = dobEditText.getText().toString().trim();
-                    String gender = genderEditText.getText().toString().trim();
-                    String breed = breedEditText.getText().toString().trim();
-                    String sire = sireEditText.getText().toString().trim();
+                String status = statusEditText.getText().toString().trim();
+                String regDate = regDateEditText.getText().toString().trim();
+                String animalId = animalIdEditText.getText().toString().trim();
+                String dob = dobEditText.getText().toString().trim();
+                String gender = genderEditText.getText().toString().trim();
+                String breed = breedEditText.getText().toString().trim();
+                String sire = sireEditText.getText().toString().trim();
 
-                    addAnimalImage(status,regDate,animalId,dob,gender,breed,sire);
-                }
+                deleteAnimal(status,regDate,animalId,dob,gender,breed,sire);
             }
         });
 
+        getAnimal(animalId);
     }
 
-    private void showDialog() {
-        final Dialog dialog = new Dialog(getContext());
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.bottom_sheet_layout);
-
-        Button chooseGalleryBtn = dialog.findViewById(R.id.choose_gallery);
-        Button chooseCameraBtn = dialog.findViewById(R.id.choose_camera);
-
-        chooseGalleryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                galleryIntent.setType("image/*");
-                startActivityForResult(galleryIntent,GALLERY_CODE);
-            }
-        });
-
-        dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        dialog.getWindow().setGravity(Gravity.BOTTOM);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == GALLERY_CODE && resultCode == -1){
-            if(data != null){
-                imageUri = data.getData();
-                animalImageButton.setImageURI(imageUri);
-                Log.d("Image uri", imageUri.toString());
-            }
-        }
-    }
-
-    public void addAnimalImage(String status, String regDate, String animalId, String dob, String gender, String breed, String sire){
+    private void updateAnimalImage(String status, String regDate, String animalId, String dob, String gender, String breed, String sire) {
         Animal animal = new Animal();
         animal.setSire(sire);
         animal.setRegisteredDate(regDate);
@@ -276,9 +197,33 @@ public class AddAnimalFragment extends Fragment {
                         }
                     });
         }else{
-            animal.setImage("Not Added");
+            animal.setImage(imageUrl);
             addAnimalDetails(animal);
         }
+    }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_sheet_layout);
+
+        Button chooseGalleryBtn = dialog.findViewById(R.id.choose_gallery);
+        Button chooseCameraBtn = dialog.findViewById(R.id.choose_camera);
+
+        chooseGalleryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent,GALLERY_CODE);
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     public void addAnimalDetails(Animal animal){
@@ -311,6 +256,45 @@ public class AddAnimalFragment extends Fragment {
                                 TastyToast.LENGTH_LONG,
                                 TastyToast.ERROR
                         );
+                    }
+                });
+    }
+
+    public void getAnimal(String animalId){
+        animalsCollection.whereEqualTo("animalId",animalId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for(QueryDocumentSnapshot animals : queryDocumentSnapshots){
+                            Animal animal = animals.toObject(Animal.class);
+                            statusEditText.setText(animal.getStatus());
+                            regDateEditText.setText(animal.getRegisteredDate());
+                            animalIdEditText.setText(animal.getAnimalId());
+                            dobEditText.setText(animal.getDob());
+                            genderEditText.setText(animal.getGender());
+                            breedEditText.setText(animal.getBreed());
+                            sireEditText.setText(animal.getSire());
+                            imageUrl = animal.getImage();
+
+                            Picasso.get()
+                                    .load(animal.getImage())
+                                    .placeholder(R.drawable.upload_image)
+                                    .fit()
+                                    .into(animalImageButton);
+
+                        }
+                    }
+                });
+    }
+
+    public void deleteAnimal(String status, String regDate, String animalId, String dob, String gender, String breed, String sire){
+        animalsCollection.document(animalId)
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        updateAnimalImage(status,regDate,animalId,dob,gender,breed,sire);
                     }
                 });
     }
