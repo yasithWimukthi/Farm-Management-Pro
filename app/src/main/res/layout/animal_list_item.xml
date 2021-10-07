@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="165dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/medical_card"
         tools:ignore="UselessParent">
