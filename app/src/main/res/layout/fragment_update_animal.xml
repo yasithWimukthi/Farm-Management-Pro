@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mask_group_2"
+    android:isScrollContainer="true"
+    android:orientation="vertical"
+    tools:context=".MedicalIsertFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/addNewMedicine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Animal"
+            android:textAlignment="center"
+            android:textColor="@color/theameGreen"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="198dp">
+
+            <ImageView
+                android:id="@+id/animalImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/upload_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Image"
+                android:textAlignment="center"
+                android:textColor="@color/theameGreen"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/statusTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Status"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/statusEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/regDateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Register Date"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/regDateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/animalIdTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Animal Identifier"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/animalIdEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/dobTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Date Of Birth"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/dobEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/genderTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Gender"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/genderEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/breedTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Breed"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/breedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/sireTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Sire"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/sireEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="146dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/resetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/theameGreen"
+                android:shadowColor="@color/black"
+                android:text="Reset"
+                android:textColor="@color/white"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp" />
+
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:shadowColor="@color/black"
+                android:text="Update"
+                android:textColor="@color/theameGreen"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/theameGreen"
+                app:strokeWidth="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
