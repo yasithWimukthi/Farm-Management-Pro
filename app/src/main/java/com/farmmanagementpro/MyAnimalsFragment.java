@@ -100,6 +100,7 @@ public class MyAnimalsFragment extends Fragment {
                         UpdateAnimalFragment updateAnimalFragment = new UpdateAnimalFragment();
                         Bundle bundle = new Bundle();
                         bundle.putString("animalId", animalId);
+                        updateAnimalFragment.setArguments(bundle);
                         getFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.container, updateAnimalFragment)

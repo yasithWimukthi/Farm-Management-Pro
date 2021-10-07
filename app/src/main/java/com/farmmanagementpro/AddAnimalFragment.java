@@ -294,6 +294,12 @@ public class AddAnimalFragment extends Fragment {
                         breedEditText.setText("");
                         sireEditText.setText("");
                         animalImageButton.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
+
+                        MyAnimalsFragment myAnimalsFragment = new MyAnimalsFragment();
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, myAnimalsFragment)
+                                .commit();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

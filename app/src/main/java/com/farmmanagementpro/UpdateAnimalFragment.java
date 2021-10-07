@@ -26,13 +26,19 @@ import android.widget.ImageView;
 
 import com.farmmanagementpro.helper.HelperMethod;
 import com.farmmanagementpro.modals.Animal;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
+import com.squareup.picasso.Picasso;
 
 public class UpdateAnimalFragment extends Fragment {
 
@@ -51,14 +57,23 @@ public class UpdateAnimalFragment extends Fragment {
     private Uri imageUri;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference animalsCollection = db.collection("animals");
     private StorageReference storageReference;
+
+    private String animalId;
+    private String imageUrl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            animalId = bundle.getString("animalId", ""); // Key, default value
+        }
         return inflater.inflate(R.layout.fragment_update_animal, container, false);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -136,9 +151,11 @@ public class UpdateAnimalFragment extends Fragment {
                 String breed = breedEditText.getText().toString().trim();
                 String sire = sireEditText.getText().toString().trim();
 
-                updateAnimalImage(status,regDate,animalId,dob,gender,breed,sire);
+                deleteAnimal(status,regDate,animalId,dob,gender,breed,sire);
             }
         });
+
+        getAnimal(animalId);
     }
 
     private void updateAnimalImage(String status, String regDate, String animalId, String dob, String gender, String breed, String sire) {
@@ -180,7 +197,7 @@ public class UpdateAnimalFragment extends Fragment {
                         }
                     });
         }else{
-            animal.setImage("Not Added");
+            animal.setImage(imageUrl);
             addAnimalDetails(animal);
         }
     }
@@ -222,6 +239,12 @@ public class UpdateAnimalFragment extends Fragment {
                         breedEditText.setText("");
                         sireEditText.setText("");
                         animalImageButton.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
+
+                        MyAnimalsFragment myAnimalsFragment = new MyAnimalsFragment();
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, myAnimalsFragment)
+                                .commit();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -233,6 +256,45 @@ public class UpdateAnimalFragment extends Fragment {
                                 TastyToast.LENGTH_LONG,
                                 TastyToast.ERROR
                         );
+                    }
+                });
+    }
+
+    public void getAnimal(String animalId){
+        animalsCollection.whereEqualTo("animalId",animalId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for(QueryDocumentSnapshot animals : queryDocumentSnapshots){
+                            Animal animal = animals.toObject(Animal.class);
+                            statusEditText.setText(animal.getStatus());
+                            regDateEditText.setText(animal.getRegisteredDate());
+                            animalIdEditText.setText(animal.getAnimalId());
+                            dobEditText.setText(animal.getDob());
+                            genderEditText.setText(animal.getGender());
+                            breedEditText.setText(animal.getBreed());
+                            sireEditText.setText(animal.getSire());
+                            imageUrl = animal.getImage();
+
+                            Picasso.get()
+                                    .load(animal.getImage())
+                                    .placeholder(R.drawable.upload_image)
+                                    .fit()
+                                    .into(animalImageButton);
+
+                        }
+                    }
+                });
+    }
+
+    public void deleteAnimal(String status, String regDate, String animalId, String dob, String gender, String breed, String sire){
+        animalsCollection.document(animalId)
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        updateAnimalImage(status,regDate,animalId,dob,gender,breed,sire);
                     }
                 });
     }
