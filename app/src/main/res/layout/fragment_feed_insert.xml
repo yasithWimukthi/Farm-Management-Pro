@@ -135,7 +135,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Supplier"
+                android:text="@string/supplier"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
