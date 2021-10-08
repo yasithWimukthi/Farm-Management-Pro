@@ -35,6 +35,7 @@ public class AddAnimalEvent extends Fragment {
     private Button resetBtn;
 
     // FIRESTORE CONNECTION
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private StorageReference storageReference;
 
@@ -124,7 +125,7 @@ public class AddAnimalEvent extends Fragment {
         event.setStockBull(stock);
         event.setNotes(note);
 
-        db.collection("events").document().set(event)
+        db.collection("events").document(date).set(event)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
