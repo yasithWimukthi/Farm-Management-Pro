@@ -78,14 +78,14 @@ public class MedicalCabinetFragment extends Fragment {
                         removeAnimal(name);
                         break;
                     case ItemTouchHelper.RIGHT:
-//                        UpdateAnimalFragment updateAnimalFragment = new UpdateAnimalFragment();
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("name", name);
-//                        updateAnimalFragment.setArguments(bundle);
-//                        getFragmentManager()
-//                                .beginTransaction()
-//                                .replace(R.id.container, updateAnimalFragment)
-//                                .commit();
+                        UpdateMedicalFragment updateMedicalFragment = new UpdateMedicalFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("name", name);
+                        updateMedicalFragment.setArguments(bundle);
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, updateMedicalFragment)
+                                .commit();
                         break;
                 }
             }
