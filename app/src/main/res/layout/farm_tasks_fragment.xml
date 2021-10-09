@@ -60,9 +60,10 @@
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         android:drawableTop="@drawable/insert_icon"
+        android:onClick="navigateToAddFarmTask"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintHorizontal_bias="0.973"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />

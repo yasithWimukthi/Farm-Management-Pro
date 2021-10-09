@@ -60,7 +60,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/fertilizer_btn"
-            android:onClick="Fertilizer"
+            android:onClick="navigateToFertilizer"
             android:text="Button" />
 
         <ImageButton
@@ -70,7 +70,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/farm_task_btn"
-            android:onClick="FarmTask"
+            android:onClick="navigateToFarmTask"
             android:text="Button" />
 
         <ImageButton
