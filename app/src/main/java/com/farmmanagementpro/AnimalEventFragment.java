@@ -36,6 +36,7 @@ import java.util.List;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class AnimalEventFragment extends Fragment {
+    /**/
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsCollection = db.collection("events");
