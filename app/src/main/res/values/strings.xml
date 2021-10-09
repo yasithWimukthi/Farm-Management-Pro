@@ -15,6 +15,7 @@
     <string name="supplier">Supplier</string>
     <string name="reset">Reset</string>
     <string name="save">Save</string>
+    <string name="update_medicine_details">Update Medicine Details</string>
 
 
 </resources>
