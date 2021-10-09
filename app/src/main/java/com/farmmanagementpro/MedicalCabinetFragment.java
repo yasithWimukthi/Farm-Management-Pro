@@ -1,6 +1,7 @@
 package com.farmmanagementpro;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sdsmdg.tastytoast.TastyToast;
+import com.shashank.sony.fancydialoglib.Animation;
+import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,15 +70,37 @@ public class MedicalCabinetFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-
                 String name = medicineList.get(position).getName();
                 deletedMedicine = medicineList.get(position);
 
                 switch (direction) {
                     case ItemTouchHelper.LEFT:
-                        medicineList.remove(position);
-                        medicineListAdapter.notifyItemRemoved(position);
-                        removeAnimal(name);
+                        FancyAlertDialog.Builder
+                                .with(getActivity())
+                                .setTitle("Warning !")
+                                .setBackgroundColor(Color.parseColor("#ff0000"))  // for @ColorRes use setBackgroundColorRes(R.color.colorvalue)
+                                .setMessage("Do you want to delete this Medicine ?")
+                                .setNegativeBtnText("Delete")
+                                .setPositiveBtnBackground(Color.parseColor("#00912B"))  // for @ColorRes use setPositiveBtnBackgroundRes(R.color.colorvalue)
+                                .setPositiveBtnText("Cancel")
+                                .setNegativeBtnBackground(Color.parseColor("#00912B"))  // for @ColorRes use setNegativeBtnBackgroundRes(R.color.colorvalue)
+                                .setAnimation(Animation.POP)
+                                .isCancellable(true)
+                                .setIcon(R.drawable.ic_baseline_pan_tool_24, View.VISIBLE)
+                                .onPositiveClicked(dialog -> {
+                                    MedicalCabinetFragment medicalCabinetFragment = new MedicalCabinetFragment();
+                                    getFragmentManager()
+                                            .beginTransaction()
+                                            .replace(R.id.container, medicalCabinetFragment)
+                                            .commit();
+                                })
+                                .onNegativeClicked(dialog -> {
+                                    medicineList.remove(position);
+                                    medicineListAdapter.notifyItemRemoved(position);
+                                    removeMedicine(name);
+                                })
+                                .build()
+                                .show();
                         break;
                     case ItemTouchHelper.RIGHT:
                         UpdateMedicalFragment updateMedicalFragment = new UpdateMedicalFragment();
@@ -106,8 +131,8 @@ public class MedicalCabinetFragment extends Fragment {
 
     }
 
-    private void removeAnimal(String animalId) {
-        medicineCollection.document(animalId)
+    private void removeMedicine(String name) {
+        medicineCollection.document(name)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
