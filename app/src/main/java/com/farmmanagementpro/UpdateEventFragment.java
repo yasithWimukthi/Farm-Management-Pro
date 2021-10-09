@@ -20,44 +20,56 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.farmmanagementpro.modals.AnimalEvent;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.StorageReference;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class AddAnimalEvent extends Fragment {
+public class UpdateEventFragment extends Fragment {
 
     private EditText eventDateEditText;
     private EditText animalIdEditText;
     private AutoCompleteTextView eventNameEditText;
     private EditText stockBullEditText;
     private EditText notesEditText;
-    private Button saveBtn;
+    private Button updateBtn;
     private Button resetBtn;
 
     // FIRESTORE CONNECTION
-
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private StorageReference storageReference;
+    private CollectionReference eventsCollection = db.collection("events");
+
+    private String date;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_add_animal_event, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            date = bundle.getString("eventDate", ""); // Key, default value
+        }
+        return inflater.inflate(R.layout.fragment_update_event, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         eventDateEditText = view.findViewById(R.id.eventDateEditText);
         animalIdEditText = view.findViewById(R.id.AnimalIdEditText);
         eventNameEditText = view.findViewById(R.id.eventNameEditText);
         stockBullEditText = view.findViewById(R.id.stockBullEditText);
         notesEditText = view.findViewById(R.id.notesEditText);
-        saveBtn = view.findViewById(R.id.saveBtn);
+        updateBtn = view.findViewById(R.id.updateBtn);
         resetBtn = view.findViewById(R.id.resetBtn);
 
         eventNameEditText.setThreshold(2);
@@ -92,7 +104,18 @@ public class AddAnimalEvent extends Fragment {
             }
         });
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventDateEditText.setText("");
+                animalIdEditText.setText("");
+                eventNameEditText.setText("");
+                stockBullEditText.setText("");
+                notesEditText.setText("");
+            }
+        });
+
+        updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(eventDateEditText.getText().toString().trim())){
@@ -123,35 +146,33 @@ public class AddAnimalEvent extends Fragment {
                     String stockBull = stockBullEditText.getText().toString().trim();
                     String note = notesEditText.getText().toString().trim();
 
-                    saveEvent(animalId,eventName,date,stockBull,note);
+                    deleteEvent(animalId,eventName,date,stockBull,note);
                 }
             }
         });
 
-        resetBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eventDateEditText.setText("");
-                animalIdEditText.setText("");
-                eventNameEditText.setText("");
-                stockBullEditText.setText("");
-                notesEditText.setText("");
-            }
-        });
+        getEvent(date);
     }
 
-    public void saveEvent(String animalId, String eventName, String date, String stock,String note){
+
+    private void updateEvent(String animalId, String eventName, String date, String stockBull, String note) {
         AnimalEvent event = new AnimalEvent();
         event.setAnimalId(animalId);
         event.setEventDate(date);
         event.setEventName(eventName);
-        event.setStockBull(stock);
+        event.setStockBull(stockBull);
         event.setNotes(note);
 
         db.collection("events").document(date).set(event)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        eventDateEditText.setText("");
+                        animalIdEditText.setText("");
+                        eventNameEditText.setText("");
+                        stockBullEditText.setText("");
+                        notesEditText.setText("");
+
                         AnimalEventFragment animalEventFragment = new AnimalEventFragment();
                         getFragmentManager()
                                 .beginTransaction()
@@ -162,7 +183,41 @@ public class AddAnimalEvent extends Fragment {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        TastyToast.makeText(
+                                getActivity(),
+                                "Error happened. Try again.",
+                                TastyToast.LENGTH_LONG,
+                                TastyToast.ERROR
+                        );
+                    }
+                });
+    }
 
+    private void getEvent(String date) {
+        eventsCollection.whereEqualTo("eventDate",date)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for(QueryDocumentSnapshot events : queryDocumentSnapshots){
+                            AnimalEvent event = events.toObject(AnimalEvent.class);
+                            eventDateEditText.setText(event.getEventDate());
+                            animalIdEditText.setText(event.getAnimalId());
+                            eventNameEditText.setText(event.getEventName());
+                            stockBullEditText.setText(event.getStockBull());
+                            notesEditText.setText(event.getNotes());
+                        }
+                    }
+                });
+    }
+
+    private void deleteEvent(String animalId, String eventName, String date, String stockBull, String note){
+        eventsCollection.document(date)
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        updateEvent(animalId,eventName,date,stockBull,note);
                     }
                 });
     }

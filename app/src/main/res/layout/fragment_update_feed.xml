@@ -18,7 +18,7 @@
             android:id="@+id/addNewFeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Feed"
+            android:text="@string/update_feed"
             android:textAlignment="center"
             android:textColor="@color/theameGreen"
             android:layout_marginTop="10dp"
@@ -30,7 +30,7 @@
             android:layout_height="198dp">
 
             <ImageView
-                android:id="@+id/uploadImageBtnFeed"
+                android:id="@+id/uploadImageBtnFeedUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/upload_image"
@@ -67,7 +67,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDateFeed"
+                android:id="@+id/editTextDateFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -92,7 +92,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextNameFeed"
+                android:id="@+id/editTextNameFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -116,7 +116,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextQtyFeed"
+                android:id="@+id/editTextQtyFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -140,7 +140,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextSupplierFeed"
+                android:id="@+id/editTextSupplierFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -163,7 +163,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDescritpionFeed"
+                android:id="@+id/editTextDescritpionFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -183,7 +183,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/resetBtnFeed"
+                android:id="@+id/resetBtnFeedUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -199,7 +199,7 @@
                 app:strokeWidth="2dp" />
 
             <Button
-                android:id="@+id/saveBtnFeed"
+                android:id="@+id/saveBtnFeedUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"

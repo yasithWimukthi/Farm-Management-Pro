@@ -22,6 +22,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 
+import com.farmmanagementpro.modals.Fertilizer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
@@ -222,14 +223,30 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
     public void InsertMedicineFragmentChange(View view){
+        toolbar.setTitle("Add New Medicine");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         MedicalIsertFragment fragment = new MedicalIsertFragment();
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
     public void MedicalCabinet(View view){
+        toolbar.setTitle("Medicine");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         MedicalCabinetFragment  fragment = new MedicalCabinetFragment();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+    public void navigateToFeedHostory(View view){
+        toolbar.setTitle("Feed Details");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FeedHistoryFragment  fragment = new FeedHistoryFragment();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+    public void navigateToInsertFeed(View view){
+        toolbar.setTitle("Add New Feed");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FeedInsert  fragment = new FeedInsert();
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
@@ -294,4 +311,36 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         transaction.replace(R.id.container, spraysFragment);
         transaction.commit();
     }
+  
+    public void navigateToAddFarmTask(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        AddNewFarmTask addNewFarmTask = new AddNewFarmTask();
+        transaction.replace(R.id.container,addNewFarmTask);
+        transaction.commit();
+    }
+
+    public void navigateToFarmTask(View view){
+        toolbar.setTitle("My FarmTask");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FarmTasksFragment myFarmTaskFragment = new FarmTasksFragment();
+        transaction.replace(R.id.container, myFarmTaskFragment);
+        transaction.commit();
+    }
+
+
+    public void navigateToAddNewFertilizer(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        AddNewFertilizer addNewFertilizer = new AddNewFertilizer();
+        transaction.replace(R.id.container, addNewFertilizer);
+        transaction.commit();
+    }
+
+    public void navigateToFertilizer(View view){
+        toolbar.setTitle("My Fertilizers");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FertilizerHistoryFragment fertilizerHistoryFragment = new FertilizerHistoryFragment();
+        transaction.replace(R.id.container, fertilizerHistoryFragment);
+        transaction.commit();
+    }
+
 }

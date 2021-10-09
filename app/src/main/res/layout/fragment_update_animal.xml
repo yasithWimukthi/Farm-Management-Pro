@@ -9,31 +9,30 @@
     android:orientation="vertical"
     tools:context=".MedicalIsertFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
-            android:id="@+id/addNewFeed"
+            android:id="@+id/addNewMedicine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Feed"
+            android:text="Update Animal"
             android:textAlignment="center"
             android:textColor="@color/theameGreen"
             android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textStyle="bold" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="198dp">
 
             <ImageView
-                android:id="@+id/uploadImageBtnFeed"
+                android:id="@+id/animalImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/upload_image"
+                app:srcCompat="@drawable/upload_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +41,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="511dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -56,43 +55,44 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textViewPuchaseDate"
+                android:id="@+id/statusTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Purchase Date"
+                android:text="Status"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextDateFeed"
+            <AutoCompleteTextView
+                android:id="@+id/statusEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/theameGreen"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
                 android:ems="10"
-                android:inputType="date"
+                android:inputType="text"
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/textViewName"
+                android:id="@+id/regDateTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Name"
+                android:text="Register Date"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextNameFeed"
+                android:id="@+id/regDateEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -105,42 +105,18 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/textViewQty"
+                android:id="@+id/animalIdTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Quantity"
+                android:text="Animal Identifier"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextQtyFeed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/theameGreen"
-                android:ems="10"
-                android:inputType="number"
-                android:soundEffectsEnabled="false"
-                android:textColor="@color/textColorSecondary"
-                android:textColorHint="@color/theameGreen" />
-
-            <TextView
-                android:id="@+id/textViewSupplier"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingTop="10dp"
-                android:text="@string/supplier"
-                android:textColor="@color/theameGreen"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTextSupplierFeed"
+                android:id="@+id/animalIdEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -151,19 +127,93 @@
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen" />
+
             <TextView
-                android:id="@+id/textViewpDesctiption"
+                android:id="@+id/dobTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Description"
+                android:text="Date Of Birth"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDescritpionFeed"
+                android:id="@+id/dobEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/genderTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Gender"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/genderEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/breedTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Breed"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/breedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/sireTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Sire"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/sireEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -183,7 +233,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/resetBtnFeed"
+                android:id="@+id/resetBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -192,14 +242,14 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/theameGreen"
                 android:shadowColor="@color/black"
-                android:text="@string/reset"
+                android:text="Reset"
                 android:textColor="@color/white"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/white"
                 app:strokeWidth="2dp" />
 
             <Button
-                android:id="@+id/saveBtnFeed"
+                android:id="@+id/updateBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -208,7 +258,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:shadowColor="@color/black"
-                android:text="@string/save"
+                android:text="Update"
                 android:textColor="@color/theameGreen"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/theameGreen"
@@ -216,6 +266,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </ScrollView>

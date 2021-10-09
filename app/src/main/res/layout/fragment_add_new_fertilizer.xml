@@ -9,31 +9,30 @@
     android:orientation="vertical"
     tools:context=".MedicalIsertFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
-            android:id="@+id/addNewFeed"
+            android:id="@+id/addNewMedicine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Feed"
+            android:layout_marginTop="10dp"
+            android:text="Add New Fertilizer"
             android:textAlignment="center"
             android:textColor="@color/theameGreen"
-            android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textStyle="bold" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="198dp">
 
             <ImageView
-                android:id="@+id/uploadImageBtnFeed"
+                android:id="@+id/FertilizerImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/upload_image"
+                app:srcCompat="@drawable/upload_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +41,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="511dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -56,43 +55,18 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textViewPuchaseDate"
+                android:id="@+id/fertilizerNameTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Purchase Date"
+                android:text="Fertilizer Name"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDateFeed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/theameGreen"
-                android:ems="10"
-                android:inputType="date"
-                android:soundEffectsEnabled="false"
-                android:textColor="@color/textColorSecondary"
-                android:textColorHint="@color/theameGreen"
-                tools:ignore="RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/textViewName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingTop="10dp"
-                android:text="Name"
-                android:textColor="@color/theameGreen"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTextNameFeed"
+                android:id="@+id/FertilizerNameEditText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -105,7 +79,31 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/textViewQty"
+                android:id="@+id/regDateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Date"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/DateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="date"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/dobTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -116,7 +114,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextQtyFeed"
+                android:id="@+id/quantityEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -129,18 +127,19 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/textViewSupplier"
+                android:id="@+id/breedTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:inputType="number"
                 android:paddingTop="10dp"
-                android:text="@string/supplier"
+                android:text="Supplier"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextSupplierFeed"
+                android:id="@+id/supplierEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -151,19 +150,44 @@
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen" />
+
             <TextView
-                android:id="@+id/textViewpDesctiption"
+                android:id="@+id/sireTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Description"
+                android:text="Batch Number"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDescritpionFeed"
+                android:id="@+id/BatchNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/sireTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Additional Information"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/additionalInfoEditText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -183,7 +207,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/resetBtnFeed"
+                android:id="@+id/fertilizerResetBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -192,14 +216,14 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/theameGreen"
                 android:shadowColor="@color/black"
-                android:text="@string/reset"
+                android:text="Reset"
                 android:textColor="@color/white"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/white"
                 app:strokeWidth="2dp" />
 
             <Button
-                android:id="@+id/saveBtnFeed"
+                android:id="@+id/fertilizerSaveBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -208,7 +232,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:shadowColor="@color/black"
-                android:text="@string/save"
+                android:text="Save"
                 android:textColor="@color/theameGreen"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/theameGreen"

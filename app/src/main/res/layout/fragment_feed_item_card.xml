@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".feed_item_card">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,34 +14,33 @@
         android:layout_marginTop="10dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/imageView"
+            android:id="@+id/cardViewFeedCard"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-
             app:cardCornerRadius="50dp">
 
             <ImageView
-                android:id="@+id/medicineCardImage"
+                android:id="@+id/imageViewFeedCard"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/upload_image"
-               />
+                />
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/PurchasedDate"
             android:layout_width="120dp"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/cardViewFeedCard"
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:text="@string/purchased_date"
             android:textColor="@color/black"/>
         <TextView
-            android:id="@+id/PurchasedDateValueMedicineCard"
+            android:id="@+id/PurchasedDateFeedCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/PurchasedDate"
             android:layout_height="20dp"
@@ -53,14 +53,14 @@
         <TextView
             android:id="@+id/Name"
             android:layout_width="120dp"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/cardViewFeedCard"
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:text="@string/name"
             android:textColor="@color/black"/>
         <TextView
-            android:id="@+id/NameValueMediCard"
+            android:id="@+id/NameFeedCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/Name"
             android:layout_height="20dp"
@@ -71,14 +71,14 @@
         <TextView
             android:id="@+id/Quantity"
             android:layout_width="120dp"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/cardViewFeedCard"
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="60dp"
             android:text="@string/quantity"
             android:textColor="@color/black"/>
         <TextView
-            android:id="@+id/QuantityValueMediCard"
+            android:id="@+id/QuantityFeedCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/Quantity"
             android:layout_height="20dp"
@@ -90,14 +90,15 @@
         <TextView
             android:id="@+id/PrescribedBy"
             android:layout_width="120dp"
-            android:layout_toEndOf="@+id/imageView"
             android:layout_height="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="19dp"
             android:layout_marginTop="80dp"
-            android:text="@string/prescribed_by"
-            android:textColor="@color/black"/>
+            android:layout_toEndOf="@+id/cardViewFeedCard"
+            android:text="@string/supplier"
+            android:textColor="@color/black" />
+
         <TextView
-            android:id="@+id/PrescribedByValueMediCard"
+            android:id="@+id/SupplierFeedCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/PrescribedBy"
             android:layout_height="20dp"
@@ -110,14 +111,14 @@
         <TextView
             android:id="@+id/Supplier"
             android:layout_width="120dp"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/cardViewFeedCard"
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="100dp"
-            android:text="@string/supplier"
+            android:text="@string/description"
             android:textColor="@color/black" />
         <TextView
-            android:id="@+id/SupplierValueMediCard"
+            android:id="@+id/DescriptionFeedCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/Supplier"
             android:layout_height="20dp"
@@ -127,4 +128,5 @@
             android:textColor="@color/black" />
     </RelativeLayout>
 
-</RelativeLayout>
+
+</FrameLayout>
