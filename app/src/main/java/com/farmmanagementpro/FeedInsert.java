@@ -1,5 +1,6 @@
 package com.farmmanagementpro;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,10 +17,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -35,6 +38,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class FeedInsert extends Fragment {
     private static final int GALLERY_CODE = 1;
@@ -77,6 +84,23 @@ public class FeedInsert extends Fragment {
             @Override
             public void onClick(View v) {
                 showDialog();
+            }
+        });
+
+        purchaseDateEt.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Calendar mCalendar = new GregorianCalendar();
+                mCalendar.setTime(new Date());
+
+                new DatePickerDialog(getActivity(), R.style.my_dialog_theme, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        purchaseDateEt.setText(dayOfMonth +"-"+(month+1)+"-"+year);
+                    }
+
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                return true;
             }
         });
 
@@ -193,6 +217,12 @@ public class FeedInsert extends Fragment {
                         descriptonEt.setText("");
                         SupplierEt.setText("");
                         uploadImage.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
+
+                        FeedHistoryFragment feedHistoryFragment = new FeedHistoryFragment();
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, feedHistoryFragment)
+                                .commit();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
