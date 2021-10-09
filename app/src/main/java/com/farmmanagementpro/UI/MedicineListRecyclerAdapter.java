@@ -24,9 +24,9 @@ public class MedicineListRecyclerAdapter  extends RecyclerView.Adapter<MedicineL
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference patientCollection = db.collection("medicine");
 
-    public MedicineListRecyclerAdapter(Context context, List<Medicine> animalList) {
+    public MedicineListRecyclerAdapter(Context context, List<Medicine> medicineList) {
         this.context = context;
-        this.medicineList = animalList;
+        this.medicineList = medicineList;
     }
 
     @NonNull

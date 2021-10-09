@@ -7,6 +7,7 @@
     android:background="@drawable/function_bg1">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/feedListRecyclerView"
         android:layout_width="390dp"
         android:layout_height="698dp"
         app:layout_constraintBottom_toBottomOf="parent"
