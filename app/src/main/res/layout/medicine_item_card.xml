@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/medical_card"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:layout_marginTop="10dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/imageView"
@@ -21,11 +22,11 @@
             app:cardCornerRadius="50dp">
 
             <ImageView
-                android:id="@+id/imageView1"
+                android:id="@+id/medicineCardImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/vaccine"
+                android:src="@drawable/upload_image"
                />
         </androidx.cardview.widget.CardView>
 
@@ -39,13 +40,13 @@
             android:text="@string/purchased_date"
             android:textColor="@color/black"/>
         <TextView
-            android:id="@+id/PurchasedDateValue"
+            android:id="@+id/PurchasedDateValueMedicineCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/PurchasedDate"
             android:layout_height="20dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
-            android:text="12/12/2021"
+
             android:textColor="@color/black"
             />
 
@@ -59,13 +60,13 @@
             android:text="@string/name"
             android:textColor="@color/black"/>
         <TextView
-            android:id="@+id/NameValue"
+            android:id="@+id/NameValueMediCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/Name"
             android:layout_height="20dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="40dp"
-            android:text="medicine"
+
             android:textColor="@color/black"/>
         <TextView
             android:id="@+id/Quantity"
@@ -77,13 +78,13 @@
             android:text="@string/quantity"
             android:textColor="@color/black"/>
         <TextView
-            android:id="@+id/QuantityValue"
+            android:id="@+id/QuantityValueMediCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/Quantity"
             android:layout_height="20dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="60dp"
-            android:text="12"
+
             android:textColor="@color/black"/>
 
         <TextView
@@ -96,13 +97,13 @@
             android:text="@string/prescribed_by"
             android:textColor="@color/black"/>
         <TextView
-            android:id="@+id/PrescribedByValue"
+            android:id="@+id/PrescribedByValueMediCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/PrescribedBy"
             android:layout_height="20dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="80dp"
-            android:text="@string/prescribed_by"
+
             android:textColor="@color/black"/>
 
 
@@ -116,13 +117,13 @@
             android:text="@string/supplier"
             android:textColor="@color/black" />
         <TextView
-            android:id="@+id/SupplierValue"
+            android:id="@+id/SupplierValueMediCard"
             android:layout_width="120dp"
             android:layout_toEndOf="@+id/Supplier"
             android:layout_height="20dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="100dp"
-            android:text="@string/supplier"
+
             android:textColor="@color/black" />
     </RelativeLayout>
 
