@@ -29,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="198dp">
 
-            <ImageButton
-                android:id="@+id/uploadImageBtn"
+            <ImageView
+                android:id="@+id/uploadImageBtnFeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/upload_image"
@@ -67,7 +67,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/editTextDateFeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -92,7 +92,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextNameFeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -116,7 +116,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextQty"
+                android:id="@+id/editTextQtyFeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -140,7 +140,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextSupplier"
+                android:id="@+id/editTextSupplierFeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -163,7 +163,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextPrescribeBy"
+                android:id="@+id/editTextDescritpionFeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -183,7 +183,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/resetBtn"
+                android:id="@+id/resetBtnFeed"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -192,14 +192,14 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/theameGreen"
                 android:shadowColor="@color/black"
-                android:text="Reset"
+                android:text="@string/reset"
                 android:textColor="@color/white"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/white"
                 app:strokeWidth="2dp" />
 
             <Button
-                android:id="@+id/saveBtn"
+                android:id="@+id/saveBtnFeed"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -208,7 +208,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:shadowColor="@color/black"
-                android:text="Save"
+                android:text="@string/save"
                 android:textColor="@color/theameGreen"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/theameGreen"
