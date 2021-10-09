@@ -16,6 +16,8 @@
     <string name="reset">Reset</string>
     <string name="save">Save</string>
     <string name="update_medicine_details">Update Medicine Details</string>
+    <string name="description">Description</string>
+    <string name="update_feed">Update Feed</string>
 
 
 </resources>
