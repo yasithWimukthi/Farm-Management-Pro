@@ -50,7 +50,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/feed_btn"
-            android:onClick="FeedHistory"
+            android:onClick="navigateToFeedHostory"
             android:text="Button" />
 
         <ImageButton

@@ -223,14 +223,30 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
     public void InsertMedicineFragmentChange(View view){
+        toolbar.setTitle("Add New Medicine");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         MedicalIsertFragment fragment = new MedicalIsertFragment();
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
     public void MedicalCabinet(View view){
+        toolbar.setTitle("Medicine");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         MedicalCabinetFragment  fragment = new MedicalCabinetFragment();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+    public void navigateToFeedHostory(View view){
+        toolbar.setTitle("Feed Details");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FeedHistoryFragment  fragment = new FeedHistoryFragment();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+    public void navigateToInsertFeed(View view){
+        toolbar.setTitle("Add New Feed");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FeedInsert  fragment = new FeedInsert();
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }

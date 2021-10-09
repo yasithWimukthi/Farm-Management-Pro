@@ -211,8 +211,6 @@ public class MedicalIsertFragment extends Fragment  {
                 });
     }
 
-
-
     private void showDialog() {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -248,6 +246,5 @@ public class MedicalIsertFragment extends Fragment  {
             }
         }
     }
-    private void saveMedicine(String date, String name, String qty, String prescribedBy, String supplier) {
-    }
+
 }

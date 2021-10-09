@@ -1,6 +1,7 @@
 package com.farmmanagementpro;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sdsmdg.tastytoast.TastyToast;
+import com.shashank.sony.fancydialoglib.Animation;
+import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,7 @@ import java.util.List;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class AnimalEventFragment extends Fragment {
+    /**/
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsCollection = db.collection("events");
@@ -75,9 +79,33 @@ public class AnimalEventFragment extends Fragment {
 
                 switch (direction) {
                     case ItemTouchHelper.LEFT:
-                        eventsList.remove(position);
-                        eventsAdapter.notifyItemRemoved(position);
-                        removeEvent(eventDate);
+                        FancyAlertDialog.Builder
+                                .with(getActivity())
+                                .setTitle("Do you want to delete this event ?")
+                                .setBackgroundColor(Color.parseColor("#F57C00"))  // for @ColorRes use setBackgroundColorRes(R.color.colorvalue)
+                                .setMessage("Do you really want to Exit ?")
+                                .setNegativeBtnText("Delete")
+                                .setPositiveBtnBackground(Color.parseColor("#F57C00"))  // for @ColorRes use setPositiveBtnBackgroundRes(R.color.colorvalue)
+                                .setPositiveBtnText("Cancel")
+                                .setNegativeBtnBackground(Color.parseColor("#A8A7A8"))  // for @ColorRes use setNegativeBtnBackgroundRes(R.color.colorvalue)
+                                .setAnimation(Animation.POP)
+                                .isCancellable(true)
+                                .setIcon(R.drawable.ic_baseline_pan_tool_24, View.VISIBLE)
+                                .onPositiveClicked(dialog -> {
+                                    AnimalEventFragment animalEventFragment = new AnimalEventFragment();
+                                    getFragmentManager()
+                                            .beginTransaction()
+                                            .replace(R.id.container, animalEventFragment)
+                                            .commit();
+                                })
+                                .onNegativeClicked(dialog -> {
+                                    eventsList.remove(position);
+                                    eventsAdapter.notifyItemRemoved(position);
+                                    removeEvent(eventDate);
+                                })
+                                .build()
+                                .show();
+
                         break;
                     case ItemTouchHelper.RIGHT:
                         UpdateEventFragment updateEventFragment = new UpdateEventFragment();

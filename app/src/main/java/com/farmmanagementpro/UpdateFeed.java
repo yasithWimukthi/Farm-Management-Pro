@@ -12,8 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,54 +20,65 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.farmmanagementpro.helper.HelperMethod;
 import com.farmmanagementpro.modals.Feed;
 import com.farmmanagementpro.modals.Medicine;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
+import com.squareup.picasso.Picasso;
 
-public class FeedInsert extends Fragment {
+
+public class UpdateFeed extends Fragment {
+
     private static final int GALLERY_CODE = 1;
 
     private ImageView uploadImage;
-    private EditText purchaseDateEt, nameEt, qtyEt,SupplierEt, descriptonEt;
-    private Button resetBtn,saveBtn;
+    private EditText purchaseDateEt, nameEt, qtyEt, descriptionEt,SupplierValue;
+    private Button resetBtn,updateBtn;
     private Uri imageUri;
 
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
-    private FirebaseUser currentUser;
-
-    //fireStore connection
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference feedCollection = db.collection("feed");
     private StorageReference storageReference;
+
+    private String name;
+    private String imageUrl;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feed_insert, container, false);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            name = bundle.getString("name", ""); // Key, default value
+        }
+        return inflater.inflate(R.layout.fragment_update_feed, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull  View v, @Nullable  Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
-        uploadImage = v.findViewById(R.id.uploadImageBtnFeed);
-        purchaseDateEt = v.findViewById(R.id.editTextDateFeed);
-        nameEt = v.findViewById(R.id.editTextNameFeed);
-        qtyEt = v.findViewById(R.id.editTextQtyFeed);
-        descriptonEt =v.findViewById(R.id.editTextDescritpionFeed);
-        SupplierEt = v.findViewById(R.id.editTextSupplierFeed);
-        resetBtn = v.findViewById(R.id.resetBtnFeed);
-        saveBtn = v.findViewById(R.id.saveBtnFeed);
+        uploadImage = v.findViewById(R.id.uploadImageBtnFeedUpdate);
+        purchaseDateEt = v.findViewById(R.id.editTextDateFeedUpdate);
+        nameEt = v.findViewById(R.id.editTextNameFeedUpdate);
+        qtyEt = v.findViewById(R.id.editTextQtyFeedUpdate);
+        descriptionEt =v.findViewById(R.id.editTextDescritpionFeedUpdate);
+        SupplierValue = v.findViewById(R.id.editTextSupplierFeedUpdate);
+        resetBtn = v.findViewById(R.id.resetBtnFeedUpdate);
+        updateBtn = v.findViewById(R.id.saveBtnFeedUpdate);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -80,72 +89,85 @@ public class FeedInsert extends Fragment {
             }
         });
 
-//        reset form
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 purchaseDateEt.setText("");
                 nameEt.setText("");
                 qtyEt.setText("");
-                descriptonEt.setText("");
-                SupplierEt.setText("");
+                descriptionEt.setText("");
+                SupplierValue.setText("");
                 uploadImage.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
             }
         });
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String date = purchaseDateEt.getText().toString().trim();
+                String name = nameEt.getText().toString().trim();
+                String qty = qtyEt.getText().toString().trim();
+                String description = descriptionEt.getText().toString().trim();
+                String supplier = SupplierValue.getText().toString().trim();
 
-                if (TextUtils.isEmpty(purchaseDateEt.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter purchase date !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else if (TextUtils.isEmpty(nameEt.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter Name !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else if (TextUtils.isEmpty(qtyEt.getText().toString().trim())){
-                    TastyToast.makeText(
-                            getActivity(),
-                            "Please enter event name !",
-                            TastyToast.LENGTH_LONG,
-                            TastyToast.ERROR
-                    );
-                }else{
-                    String date = purchaseDateEt.getText().toString().trim();
-                    String name = nameEt.getText().toString().trim();
-                    String qty = qtyEt.getText().toString().trim();
-                    String description = descriptonEt.getText().toString().trim();
-                    String Supplier = SupplierEt.getText().toString().trim();
 
-                    addFeedImage(date,name,qty,Supplier,description);
-                }
 
+                deleteFeed(date,name,qty,description,supplier);
             }
         });
 
-
-
-
+        getMedicine(name);
     }
 
-    private void addFeedImage(String date, String name, String qty, String supplier, String description) {
-        Feed feed = new Feed();
+    private void getMedicine(String name) {
+        feedCollection.whereEqualTo("name",name)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for(QueryDocumentSnapshot feeds : queryDocumentSnapshots){
+                            Feed feed = feeds.toObject(Feed.class);
+                            purchaseDateEt.setText(feed.getDate());
+                            nameEt.setText(feed.getName());
+                            qtyEt.setText(feed.getQty());
+                            descriptionEt.setText(feed.getDesctiption());
+                            SupplierValue.setText(feed.getSupplier());
+
+                            imageUrl = feed.getImage();
+
+                            Picasso.get()
+                                    .load(feed.getImage())
+                                    .placeholder(R.drawable.upload_image)
+                                    .fit()
+                                    .into(uploadImage);
+
+                        }
+                    }
+                });
+    }
+
+    private void deleteFeed(String date, String name, String qty, String description, String supplier) {
+        feedCollection.document(name)
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        updateFeedImage(date,name,qty,description,supplier);
+                    }
+                });
+    }
+
+    private void updateFeedImage(String date, String name, String qty, String description, String supplier) {
+
+        Feed feed =new Feed();
         feed.setDate(date);
         feed.setName(name);
         feed.setQty(qty);
         feed.setDesctiption(description);
         feed.setSupplier(supplier);
 
-        if(imageUri != null){
-            StorageReference filePath = storageReference.child("medicine").child(name);
+        if (imageUri != null){
+            StorageReference filePath = storageReference.child("feed").child(name);
             filePath.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -161,9 +183,7 @@ public class FeedInsert extends Fragment {
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            int duration = Toast.LENGTH_SHORT;
-                                            Toast toast = Toast.makeText(getContext(),"Error happened while uploading image.", duration);
-                                            toast.show();
+                                            HelperMethod.createErrorToast(getActivity(),"Error happened while uploading image.");
                                         }
                                     });
                         }
@@ -171,13 +191,11 @@ public class FeedInsert extends Fragment {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            int duration = Toast.LENGTH_SHORT;
-                            Toast toast = Toast.makeText(getContext(),"Error happened while uploading image.", duration);
-                            toast.show();
+                            HelperMethod.createErrorToast(getActivity(),"Error happened while uploading image.");
                         }
                     });
         }else{
-            feed.setImage("Not Added");
+            feed.setImage(imageUrl);
             addFeedDetails(feed);
         }
     }
@@ -187,12 +205,20 @@ public class FeedInsert extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        nameEt.setText("");
                         purchaseDateEt.setText("");
+                        nameEt.setText("");
                         qtyEt.setText("");
-                        descriptonEt.setText("");
-                        SupplierEt.setText("");
+                        descriptionEt.setText("");
+                        SupplierValue.setText("");
                         uploadImage.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
+
+
+                        FeedHistoryFragment feedHistoryFragment  = new FeedHistoryFragment();
+
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, feedHistoryFragment)
+                                .commit();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -230,19 +256,7 @@ public class FeedInsert extends Fragment {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
-
-
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == GALLERY_CODE && resultCode == -1){
-            if(data != null){
-                imageUri = data.getData();
-                uploadImage.setImageURI(imageUri);
-                Log.d("Image uri", imageUri.toString());
-            }
-        }
-    }
+
 }

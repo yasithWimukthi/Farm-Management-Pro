@@ -9,16 +9,16 @@
     android:orientation="vertical"
     tools:context=".MedicalIsertFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <TextView
-            android:id="@+id/addNewMedicine"
+            android:id="@+id/addNewFeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Animal Event"
+            android:text="@string/update_feed"
             android:textAlignment="center"
             android:textColor="@color/theameGreen"
             android:layout_marginTop="10dp"
@@ -30,14 +30,14 @@
             android:layout_height="198dp">
 
             <ImageView
-                android:id="@+id/eventImageView"
-                android:layout_width="301dp"
-                android:layout_height="159dp"
+                android:id="@+id/uploadImageBtnFeedUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/upload_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/businessman_planning_events_deadlines_agenda_2ipux06" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -46,18 +46,28 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/eventDateTextView"
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Image"
+                android:textAlignment="center"
+                android:textColor="@color/theameGreen"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewPuchaseDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Event Date"
+                android:text="Purchase Date"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/eventDateEditText"
+                android:id="@+id/editTextDateFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -71,18 +81,18 @@
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/AnimalIdTextView"
+                android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Animal ID"
+                android:text="Name"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/AnimalIdEditText"
+                android:id="@+id/editTextNameFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -95,43 +105,42 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/eventNameTextView"
+                android:id="@+id/textViewQty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Event Name"
+                android:text="Quantity"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
-            <AutoCompleteTextView
-                android:id="@+id/eventNameEditText"
+            <EditText
+                android:id="@+id/editTextQtyFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/theameGreen"
-                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="number"
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/stockBullTextView"
+                android:id="@+id/textViewSupplier"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Al/Stock Bull"
+                android:text="@string/supplier"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/stockBullEditText"
+                android:id="@+id/editTextSupplierFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -142,27 +151,26 @@
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen" />
-
             <TextView
-                android:id="@+id/notesTextView"
+                android:id="@+id/textViewpDesctiption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Notes"
+                android:text="Description"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/notesEditText"
+                android:id="@+id/editTextDescritpionFeedUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/theameGreen"
                 android:ems="10"
-                android:inputType="textMultiLine"
+                android:inputType="text"
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen" />
@@ -175,7 +183,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/resetBtn"
+                android:id="@+id/resetBtnFeedUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -184,14 +192,14 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/theameGreen"
                 android:shadowColor="@color/black"
-                android:text="Reset"
+                android:text="@string/reset"
                 android:textColor="@color/white"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/white"
                 app:strokeWidth="2dp" />
 
             <Button
-                android:id="@+id/updateBtn"
+                android:id="@+id/saveBtnFeedUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -200,7 +208,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:shadowColor="@color/black"
-                android:text="Save"
+                android:text="@string/save"
                 android:textColor="@color/theameGreen"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/theameGreen"
