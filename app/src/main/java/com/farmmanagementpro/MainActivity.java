@@ -282,13 +282,42 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         transaction.commit();
     }
 
+    public void InsertMachineFragmentChange(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        MyMachineryInsert fragment = new MyMachineryInsert();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+
+    public void navigateToMyMachinery(View view){
+        toolbar.setTitle("My Machinery");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        MyMachineryFragment myMachineryFragment = new MyMachineryFragment();
+        transaction.replace(R.id.container, myMachineryFragment);
+        transaction.commit();
+    }
+
+    public void InsertSprayFragmentChange(View view){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        SpraysInsert fragment = new SpraysInsert();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+
+    public void navigateToSprays(View view){
+        toolbar.setTitle("Sprays");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        SpraysFragment spraysFragment = new SpraysFragment();
+        transaction.replace(R.id.container, spraysFragment);
+        transaction.commit();
+    }
+  
     public void navigateToAddFarmTask(View view){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         AddNewFarmTask addNewFarmTask = new AddNewFarmTask();
         transaction.replace(R.id.container,addNewFarmTask);
         transaction.commit();
     }
-
 
     public void navigateToFarmTask(View view){
         toolbar.setTitle("My FarmTask");
@@ -313,6 +342,5 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         transaction.replace(R.id.container, fertilizerHistoryFragment);
         transaction.commit();
     }
-
 
 }

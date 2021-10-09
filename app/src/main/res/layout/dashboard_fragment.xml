@@ -80,7 +80,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/machines_btn"
-            android:onClick="MyMachines"
+            android:onClick="navigateToMyMachinery"
             android:text="Button" />
 
         <ImageButton
@@ -90,7 +90,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/sprays_bnt_green"
-            android:onClick="Sprays"
+            android:onClick="navigateToSprays"
             android:text="Button" />
 
 

@@ -7,13 +7,17 @@
     android:background="@drawable/function_bg1">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="390dp"
-        android:layout_height="698dp"
+        android:id="@+id/myMachineryRecyclerView"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
         android:id="@+id/SearchBar"
@@ -36,7 +40,7 @@
         app:layout_constraintVertical_bias="0.019" />
 
     <Button
-        android:id="@+id/searchBtnMedical"
+        android:id="@+id/searchMachineServicesBtn"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="54dp"
         android:layout_height="32dp"
@@ -60,6 +64,7 @@
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         android:drawableTop="@drawable/insert_icon"
+        android:onClick="InsertMachineFragmentChange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.971"
