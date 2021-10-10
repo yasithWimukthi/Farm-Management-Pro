@@ -16,7 +16,19 @@
 
     <array name="id_activityScreenIcons">
         <item>0</item>
-        <item>@drawable/ic_home</item>
+
+        <item>@drawable/home_icon</item>
+        <item>@drawable/myanimalicon</item>
+        <item>@drawable/animalhostoryicon</item>
+        <item>@drawable/farmtaskicon</item>
+        <item>@drawable/fertilizericon</item>
+        <item>@drawable/medicineicon</item>
+        <item>@drawable/feedicon</item>
+        <item>@drawable/machinesicon</item>
+        <item>@drawable/sprayicon</item>
+        <item>@drawable/logout</item>
+
+<!--         <item>@drawable/ic_home</item>
         <item>@drawable/ic_baseline_cruelty_free_24</item>
         <item>@drawable/ic_baseline_event_available_24</item>
         <item>@drawable/ic_baseline_content_paste_24</item>
@@ -24,8 +36,9 @@
         <item>@drawable/ic_baseline_sanitizer_24</item>
         <item>@drawable/ic_baseline_cookie_24</item>
         <item>@drawable/ic_baseline_inventory_2_24</item>
-        <item>@drawable/ic_baseline_fire_extinguisher_24</item>
+        <item>@drawable/ic_baseline_fire_extinguisher_24</item> -->
 <!--        <item>@drawable/ic_baseline_fire_extinguisher_24</item>-->
+
         <item>0</item>
         <item>@drawable/ic_baseline_logout_24</item>
     </array>
