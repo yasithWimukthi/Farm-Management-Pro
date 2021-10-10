@@ -16,16 +16,13 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.farmmanagementpro.modals.FarmTask;
 import com.farmmanagementpro.modals.Fertilizer;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,7 +33,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import com.farmmanagementpro.helper.HelperMethod;
-import com.farmmanagementpro.modals.Animal;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
 
@@ -72,15 +68,15 @@ public class AddNewFertilizer extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        DateEditText = view.findViewById(R.id.DateEditText);
-        FertilizerNameEditText2 = view.findViewById(R.id.FertilizerNameEditText2);
+        DateEditText = view.findViewById(R.id.dateEditText);
+        FertilizerNameEditText2 = view.findViewById(R.id.fertilizerNameEditText);
         quantityEditText = view.findViewById(R.id.quantityEditText);
-        additionalInfoEditText2 = view.findViewById(R.id.additionalInfoEditText2);
+        additionalInfoEditText2 = view.findViewById(R.id.additionalInfoEditText);
         supplierEditText = view.findViewById(R.id.supplierEditText);
-        BatchNumberEditText = view.findViewById(R.id.BatchNumberEditText);
+        BatchNumberEditText = view.findViewById(R.id.batchNumberEditText);
         fertilizerSaveBtn = view.findViewById(R.id.fertilizerSaveBtn);
         fertilizerResetBtn = view.findViewById(R.id.fertilizerResetBtn);
-        FertilizerImageButton = view.findViewById(R.id.FertilizerImageButton);
+        FertilizerImageButton = view.findViewById(R.id.fertilizerImageButton);
 
 
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -248,7 +244,7 @@ public class AddNewFertilizer extends Fragment {
     }
 
     public void addFertilizerDetails(Fertilizer fertilizer){
-        db.collection("fertilizers").document(fertilizer.getBatchNo()).set(fertilizer)
+        db.collection("fertilizer").document(fertilizer.getBatchNo()).set(fertilizer)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
