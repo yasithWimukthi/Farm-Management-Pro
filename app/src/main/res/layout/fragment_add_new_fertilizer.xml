@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/additionalInfoEditText"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mask_group_2"
@@ -24,19 +25,20 @@
             android:textColor="@color/theameGreen"
             android:textSize="20sp"
             android:textStyle="bold" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="198dp">
 
             <ImageView
-                android:id="@+id/FertilizerImageButton"
+                android:id="@+id/fertilizerImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/upload_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/upload_image" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -66,7 +68,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/FertilizerNameEditText2"
+                android:id="@+id/fertilizerNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -90,7 +92,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/DateEditText"
+                android:id="@+id/dateEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -163,7 +165,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/BatchNumberEditText"
+                android:id="@+id/batchNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -187,7 +189,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/additionalInfoEditText2"
+                android:id="@+id/updateAdditionalInfoEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

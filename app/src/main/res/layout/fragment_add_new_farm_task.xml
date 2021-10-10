@@ -58,7 +58,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/taskDateEditText"
+                android:id="@+id/updateTaskDateEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -83,7 +83,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/TaskNameEditText"
+                android:id="@+id/updateTaskNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -107,7 +107,7 @@
                 android:textSize="20sp" />
 
             <AutoCompleteTextView
-                android:id="@+id/taskStatusEditText"
+                android:id="@+id/updateTaskStatusEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -132,7 +132,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/descriptionEditText"
+                android:id="@+id/updateDescriptionEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -150,7 +150,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/taskResetBtn"
+                    android:id="@+id/updatetaskResetBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_marginLeft="20dp"
@@ -166,7 +166,7 @@
                     app:strokeWidth="2dp" />
 
                 <Button
-                    android:id="@+id/tasksaveBtn"
+                    android:id="@+id/updateTaskSaveBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_marginLeft="20dp"

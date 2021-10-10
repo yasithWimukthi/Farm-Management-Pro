@@ -7,13 +7,14 @@
     android:background="@drawable/function_bg1">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="390dp"
-        android:layout_height="698dp"
+        android:id="@+id/taskRecyclerView"
+        android:layout_width="365dp"
+        android:layout_height="572dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
 
     <EditText
         android:id="@+id/SearchBar"
@@ -33,7 +34,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019" />
+        app:layout_constraintVertical_bias="0.018" />
 
     <Button
         android:id="@+id/searchBtnMedical"

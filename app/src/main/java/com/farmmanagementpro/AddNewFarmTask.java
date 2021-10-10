@@ -1,7 +1,6 @@
 package com.farmmanagementpro;
 
-import android.app.Activity;
-import android.content.Context;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -11,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +24,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class AddNewFarmTask extends Fragment {
 
@@ -45,19 +49,19 @@ public class AddNewFarmTask extends Fragment {
 
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        taskDateEditText = view.findViewById(R.id.taskDateEditText);
-        TaskNameEditText = view.findViewById(R.id.TaskNameEditText);
-        taskStatusEditText = view.findViewById(R.id.taskStatusEditText);
-        descriptionEditText = view.findViewById(R.id.descriptionEditText);
-        saveBtn = view.findViewById(R.id.tasksaveBtn);
-        resetBtn = view.findViewById(R.id.taskResetBtn);
+        taskDateEditText = view.findViewById(R.id.updateTaskDateEditText);
+        TaskNameEditText = view.findViewById(R.id.updateTaskNameEditText);
+        taskStatusEditText = view.findViewById(R.id.updateTaskStatusEditText);
+        descriptionEditText = view.findViewById(R.id.updateDescriptionEditText);
+        saveBtn = view.findViewById(R.id.updateTaskSaveBtn);
+        resetBtn = view.findViewById(R.id.updatetaskResetBtn);
 
         taskStatusEditText.setThreshold(2);
 
         final String[] status = new String[]{"On going", "Completed", "Not Completed"};
 
-        ArrayAdapter<String> eventNameAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, status);
-        taskStatusEditText.setAdapter(eventNameAdapter);
+        ArrayAdapter<String> taskNameAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, status);
+        taskStatusEditText.setAdapter(taskNameAdapter);
 
         taskStatusEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -66,6 +70,27 @@ public class AddNewFarmTask extends Fragment {
                 return true;
             }
         });
+
+
+        taskDateEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Calendar mCalendar = new GregorianCalendar();
+                mCalendar.setTime(new Date());
+
+                new DatePickerDialog(getActivity(), R.style.my_dialog_theme, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        taskDateEditText.setText(dayOfMonth +"-"+month+"-"+year);
+                    }
+
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                return true;
+            }
+        });
+
+
+
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +146,7 @@ public class AddNewFarmTask extends Fragment {
         task.setTaskName(taskName);
         task.setDescription(description);
 
-        db.collection("task").document(taskName).set(task)
+        db.collection("task").document(date).set(task)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

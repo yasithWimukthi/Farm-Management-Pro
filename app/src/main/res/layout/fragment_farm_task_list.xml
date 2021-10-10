@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/medical_card"
+        tools:ignore="UselessParent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:id="@+id/fertilizerImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/vaccine" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/animalId"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Task Name"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/fertilizerNameValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/animalId"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/eventName"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Status"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/fertilizerDate"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/eventName"
+            android:text="medicine"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/eventDate"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Task Due Date"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/fertilizerQty"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@+id/eventDate"
+            android:text="12"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/stockBull"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Description"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/descriptionValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="80dp"
+            android:layout_toEndOf="@+id/stockBull"
+            android:text="@string/prescribed_by"
+            android:textColor="@color/black" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
