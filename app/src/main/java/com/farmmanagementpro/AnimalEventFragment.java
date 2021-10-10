@@ -1,5 +1,6 @@
 package com.farmmanagementpro;
 
+import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -71,6 +73,9 @@ public class AnimalEventFragment extends Fragment {
                 return false;
             }
 
+
+            @SuppressLint({"SupportAnnotationUsage", "ResourceAsColor"})
+            @ColorRes
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
@@ -81,13 +86,13 @@ public class AnimalEventFragment extends Fragment {
                     case ItemTouchHelper.LEFT:
                         FancyAlertDialog.Builder
                                 .with(getActivity())
-                                .setTitle("Do you want to delete this event ?")
-                                .setBackgroundColor(Color.parseColor("#F57C00"))  // for @ColorRes use setBackgroundColorRes(R.color.colorvalue)
-                                .setMessage("Do you really want to Exit ?")
+                                .setTitle("Warning !")
+                                .setBackgroundColor(Color.parseColor("#ff0000"))  // for @ColorRes use setBackgroundColorRes(R.color.colorvalue)
+                                .setMessage("Do you want to delete this event ?")
                                 .setNegativeBtnText("Delete")
                                 .setPositiveBtnBackground(Color.parseColor("#F57C00"))  // for @ColorRes use setPositiveBtnBackgroundRes(R.color.colorvalue)
                                 .setPositiveBtnText("Cancel")
-                                .setNegativeBtnBackground(Color.parseColor("#A8A7A8"))  // for @ColorRes use setNegativeBtnBackgroundRes(R.color.colorvalue)
+                                .setNegativeBtnBackground(R.color.negativeBtn)  // for @ColorRes use setNegativeBtnBackgroundRes(R.color.colorvalue)
                                 .setAnimation(Animation.POP)
                                 .isCancellable(true)
                                 .setIcon(R.drawable.ic_baseline_pan_tool_24, View.VISIBLE)
@@ -123,7 +128,7 @@ public class AnimalEventFragment extends Fragment {
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorAccent))
+                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(getActivity(),R.color.positiveBtn))
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                         .addSwipeRightBackgroundColor(ContextCompat.getColor(getActivity(),R.color.green))
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)
