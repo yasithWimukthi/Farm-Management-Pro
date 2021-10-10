@@ -16,16 +16,16 @@
 
     <array name="id_activityScreenIcons">
         <item>0</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/home_icon</item>
+        <item>@drawable/myanimalicon</item>
+        <item>@drawable/animalhostoryicon</item>
+        <item>@drawable/farmtaskicon</item>
+        <item>@drawable/fertilizericon</item>
+        <item>@drawable/medicineicon</item>
+        <item>@drawable/feedicon</item>
+        <item>@drawable/machinesicon</item>
+        <item>@drawable/sprayicon</item>
+        <item>@drawable/logout</item>
         <item>0</item>
         <item>@drawable/ic_account_outline_grey600_24dp</item>
     </array>
