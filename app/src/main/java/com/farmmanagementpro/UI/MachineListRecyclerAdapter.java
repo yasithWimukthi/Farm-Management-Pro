@@ -19,13 +19,13 @@ import java.util.List;
 
 public class MachineListRecyclerAdapter extends RecyclerView.Adapter<MachineListRecyclerAdapter.ViewHolder>{
     private Context context;
-    private List<Machine> machineList;
+    private List<Machine> machinesList;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference patientCollection = db.collection("machines");
 
-    public MachineListRecyclerAdapter(Context context, List<Machine> eventsList) {
+    public MachineListRecyclerAdapter(Context context, List<Machine> machinesList) {
         this.context = context;
-        this.machineList = machineList;
+        this.machinesList = machinesList;
     }
 
     @NonNull
@@ -38,7 +38,7 @@ public class MachineListRecyclerAdapter extends RecyclerView.Adapter<MachineList
 
     @Override
     public void onBindViewHolder(@NonNull MachineListRecyclerAdapter.ViewHolder holder, int position) {
-        Machine machine = machineList.get(position);
+        Machine machine = machinesList.get(position);
         holder.name.setText(machine.getName());
         holder.date.setText(machine.getDate());
         holder.type.setText(machine.getType());
@@ -48,7 +48,7 @@ public class MachineListRecyclerAdapter extends RecyclerView.Adapter<MachineList
 
     @Override
     public int getItemCount() {
-        return machineList.size();
+        return machinesList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

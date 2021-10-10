@@ -8,16 +8,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/medical_card">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/imageView"
-            app:cardCornerRadius="50dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
 
-            android:layout_marginTop="20dp">
+            app:cardCornerRadius="50dp">
 
             <ImageView
                 android:id="@+id/machineImage"
@@ -43,7 +44,7 @@
             android:layout_marginStart="13dp"
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/machineName"
-            android:text="12/12/2021"
+            android:text="Browns Tafe"
             android:textColor="@color/black" />
 
         <TextView
@@ -63,7 +64,7 @@
             android:layout_marginStart="13dp"
             android:layout_marginTop="40dp"
             android:layout_toEndOf="@+id/machineName"
-            android:text="medicine"
+            android:text="06/12"
             android:textColor="@color/black" />
 
         <TextView
@@ -83,7 +84,7 @@
             android:layout_marginStart="13dp"
             android:layout_marginTop="60dp"
             android:layout_toEndOf="@+id/serviceType"
-            android:text="12"
+            android:text="Full"
             android:textColor="@color/black" />
 
         <TextView
@@ -103,7 +104,7 @@
             android:layout_marginStart="13dp"
             android:layout_marginTop="80dp"
             android:layout_toEndOf="@+id/serviceCost"
-            android:text="sd"
+            android:text="10000"
             android:textColor="@color/black" />
 
         <TextView
@@ -123,7 +124,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="100dp"
             android:layout_toEndOf="@+id/machineNotes"
-            android:text="s"
+            android:text="Good"
             android:textColor="@color/black" />
 
         Supplier

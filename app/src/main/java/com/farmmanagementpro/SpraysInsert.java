@@ -1,5 +1,6 @@
 package com.farmmanagementpro;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,10 +17,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -35,6 +38,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class SpraysInsert extends Fragment {
     private static final int GALLERY_CODE = 1;
@@ -83,6 +90,24 @@ public class SpraysInsert extends Fragment {
                 showDialog();
             }
         });
+
+        addSprayPurchasedDate.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Calendar mCalendar = new GregorianCalendar();
+                mCalendar.setTime(new Date());
+
+                new DatePickerDialog(getActivity(), R.style.my_dialog_theme, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        addSprayPurchasedDate.setText(dayOfMonth +"-"+month+"-"+year);
+                    }
+
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                return true;
+            }
+        });
+
 
         saveSBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,7 +228,7 @@ public class SpraysInsert extends Fragment {
         spray.setInformation(information);
 
         if (imageUri != null){
-            StorageReference filePath = storageReference.child("sprays").child(number);
+            StorageReference filePath = storageReference.child("sprays").child(name);
             filePath.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -237,11 +262,10 @@ public class SpraysInsert extends Fragment {
     }
 
     public void addSprayDetails(Spray spray){
-        db.collection("sprays").document(spray.getNumber()).set(spray)
+        db.collection("sprays").document(spray.getName()).set(spray)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getContext(),"Added Successfully",Toast.LENGTH_LONG).show();
                         addSprayName.setText("");
                         addSprayPurchasedDate.setText("");
                         addSprayQty.setText("");
@@ -249,6 +273,12 @@ public class SpraysInsert extends Fragment {
                         addSpraySupplier.setText("");
                         addSprayInformation.setText("");
                         sprayImageBtn.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
+
+                        SpraysFragment spraysFragment = new SpraysFragment();
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, spraysFragment)
+                                .commit();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
