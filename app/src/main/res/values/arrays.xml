@@ -16,7 +16,7 @@
 
     <array name="id_activityScreenIcons">
         <item>0</item>
-        <item>@drawable/ic_account_outline_grey600_24dp</item>
+        <item>@drawable/ic_home</item>
         <item>@drawable/ic_account_outline_grey600_24dp</item>
         <item>@drawable/ic_account_outline_grey600_24dp</item>
         <item>@drawable/ic_account_outline_grey600_24dp</item>
