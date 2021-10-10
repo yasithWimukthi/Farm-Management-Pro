@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/taskrestbtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mask_group_2"
@@ -15,13 +16,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/addNewMedicine"
+            android:id="@+id/addNewFarmTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Animal Event"
+            android:layout_marginTop="10dp"
+            android:text="AddNewTask"
             android:textAlignment="center"
             android:textColor="@color/theameGreen"
-            android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -52,12 +53,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Event Date"
+                android:text="Task Due Date"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/eventDateEditText"
+                android:id="@+id/taskDateEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -77,12 +78,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Animal ID"
+                android:text="Task Name"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/AnimalIdEditText"
+                android:id="@+id/TaskNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -101,12 +102,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Event Name"
+                android:text="Status"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <AutoCompleteTextView
-                android:id="@+id/eventNameEditText"
+                android:id="@+id/taskStatusEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -120,42 +121,18 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/stockBullTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingTop="10dp"
-                android:text="Al/Stock Bull"
-                android:textColor="@color/theameGreen"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/stockBullEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/theameGreen"
-                android:ems="10"
-                android:inputType="text"
-                android:soundEffectsEnabled="false"
-                android:textColor="@color/textColorSecondary"
-                android:textColorHint="@color/theameGreen" />
-
-            <TextView
                 android:id="@+id/notesTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Notes"
+                android:text="Description"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/notesEditText"
+                android:id="@+id/descriptionEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -167,44 +144,44 @@
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:orientation="horizontal">
+                <Button
+                    android:id="@+id/taskResetBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/theameGreen"
+                    android:shadowColor="@color/black"
+                    android:text="Reset"
+                    android:textColor="@color/white"
+                    app:cornerRadius="5dp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="2dp" />
 
-            <Button
-                android:id="@+id/resetBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/theameGreen"
-                android:shadowColor="@color/black"
-                android:text="Reset"
-                android:textColor="@color/white"
-                app:cornerRadius="5dp"
-                app:strokeColor="@color/white"
-                app:strokeWidth="2dp" />
+                <Button
+                    android:id="@+id/tasksaveBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:shadowColor="@color/black"
+                    android:text="Save"
+                    android:textColor="@color/theameGreen"
+                    app:cornerRadius="5dp"
+                    app:strokeColor="@color/theameGreen"
+                    app:strokeWidth="2dp" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/updateBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
-                android:shadowColor="@color/black"
-                android:text="Save"
-                android:textColor="@color/theameGreen"
-                app:cornerRadius="5dp"
-                app:strokeColor="@color/theameGreen"
-                app:strokeWidth="2dp" />
         </LinearLayout>
 
     </LinearLayout>

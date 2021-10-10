@@ -49,7 +49,7 @@ public class AnimalListRecyclerAdapter extends RecyclerView.Adapter<AnimalListRe
 
         Picasso.get()
                 .load(animal.getImage())
-                .placeholder(R.drawable.vaccine)
+                .placeholder(R.drawable.animal)
                 .fit()
                 .into(holder.animalImage);
     }

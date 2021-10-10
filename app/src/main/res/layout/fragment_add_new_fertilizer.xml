@@ -18,46 +18,79 @@
             android:id="@+id/addNewMedicine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Animal Event"
+            android:layout_marginTop="10dp"
+            android:text="Add New Fertilizer"
             android:textAlignment="center"
             android:textColor="@color/theameGreen"
-            android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textStyle="bold" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="198dp">
 
             <ImageView
-                android:id="@+id/eventImageView"
-                android:layout_width="301dp"
-                android:layout_height="159dp"
+                android:id="@+id/FertilizerImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/upload_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/businessman_planning_events_deadlines_agenda_2ipux06" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="511dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/eventDateTextView"
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Image"
+                android:textAlignment="center"
+                android:textColor="@color/theameGreen"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fertilizerNameTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Event Date"
+                android:text="Fertilizer Name"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/eventDateEditText"
+                android:id="@+id/FertilizerNameEditText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="text"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/regDateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Date"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/DateEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -67,22 +100,46 @@
                 android:inputType="date"
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
-                android:textColorHint="@color/theameGreen"
-                tools:ignore="RtlSymmetry" />
+                android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/AnimalIdTextView"
+                android:id="@+id/dobTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Animal ID"
+                android:text="Quantity"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/AnimalIdEditText"
+                android:id="@+id/quantityEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/theameGreen"
+                android:ems="10"
+                android:inputType="number"
+                android:soundEffectsEnabled="false"
+                android:textColor="@color/textColorSecondary"
+                android:textColorHint="@color/theameGreen" />
+
+            <TextView
+                android:id="@+id/breedTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:inputType="number"
+                android:paddingTop="10dp"
+                android:text="Supplier"
+                android:textColor="@color/theameGreen"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/supplierEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -95,43 +152,18 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/eventNameTextView"
+                android:id="@+id/sireTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Event Name"
-                android:textColor="@color/theameGreen"
-                android:textSize="20sp" />
-
-            <AutoCompleteTextView
-                android:id="@+id/eventNameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/theameGreen"
-                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
-                android:ems="10"
-                android:inputType="text"
-                android:soundEffectsEnabled="false"
-                android:textColor="@color/textColorSecondary"
-                android:textColorHint="@color/theameGreen" />
-
-            <TextView
-                android:id="@+id/stockBullTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingTop="10dp"
-                android:text="Al/Stock Bull"
+                android:text="Batch Number"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/stockBullEditText"
+                android:id="@+id/BatchNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -144,25 +176,25 @@
                 android:textColorHint="@color/theameGreen" />
 
             <TextView
-                android:id="@+id/notesTextView"
+                android:id="@+id/sireTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingTop="10dp"
-                android:text="Notes"
+                android:text="Additional Information"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/notesEditText"
+                android:id="@+id/additionalInfoEditText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/theameGreen"
                 android:ems="10"
-                android:inputType="textMultiLine"
+                android:inputType="text"
                 android:soundEffectsEnabled="false"
                 android:textColor="@color/textColorSecondary"
                 android:textColorHint="@color/theameGreen" />
@@ -175,7 +207,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/resetBtn"
+                android:id="@+id/fertilizerResetBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
@@ -191,7 +223,7 @@
                 app:strokeWidth="2dp" />
 
             <Button
-                android:id="@+id/updateBtn"
+                android:id="@+id/fertilizerSaveBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_marginLeft="20dp"
