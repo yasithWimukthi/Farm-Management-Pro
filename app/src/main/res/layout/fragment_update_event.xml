@@ -200,7 +200,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:shadowColor="@color/black"
-                android:text="Save"
+                android:text="Update"
                 android:textColor="@color/theameGreen"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/theameGreen"
