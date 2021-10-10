@@ -7,8 +7,9 @@
     android:background="@drawable/function_bg1">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="390dp"
-        android:layout_height="698dp"
+        android:id="@+id/fertilizerListRecyclerView"
+        android:layout_width="392dp"
+        android:layout_height="563dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
