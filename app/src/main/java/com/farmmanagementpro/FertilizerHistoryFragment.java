@@ -1,5 +1,6 @@
 package com.farmmanagementpro;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +18,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -88,6 +90,9 @@ public class FertilizerHistoryFragment extends Fragment {
                 return false;
             }
 
+
+            @SuppressLint({"SupportAnnotationUsage", "ResourceAsColor"})
+            @ColorRes
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
@@ -98,14 +103,13 @@ public class FertilizerHistoryFragment extends Fragment {
                     case ItemTouchHelper.LEFT:
                         FancyAlertDialog.Builder
                                 .with(getActivity())
-                                .setTitle("Do you want to delete this this animal ?")
-                                .setBackgroundColor(Color.parseColor("#F57C00"))  // for @ColorRes use setBackgroundColorRes(R.color.colorvalue)
-                                .setMessage("Do you really want to Exit ?")
-                                .setNegativeBtnText("Delete")
-                                .setPositiveBtnBackground(Color.parseColor("#F57C00"))  // for @ColorRes use setPositiveBtnBackgroundRes(R.color.colorvalue)
-                                .setPositiveBtnText("Cancel")
-                                .setNegativeBtnBackground(Color.parseColor("#A8A7A8"))  // for @ColorRes use setNegativeBtnBackgroundRes(R.color.colorvalue)
-                                .setAnimation(Animation.POP)
+                            .setTitle("Warning !")
+                            .setBackgroundColor(Color.parseColor("#ff0000"))  // for @ColorRes use setBackgroundColorRes(R.color.colorvalue)
+                            .setMessage("Do you want to delete this fertilizer ?")
+                            .setNegativeBtnText("Delete")
+                            .setPositiveBtnBackground(Color.parseColor("#F57C00"))  // for @ColorRes use setPositiveBtnBackgroundRes(R.color.colorvalue)
+                            .setPositiveBtnText("Cancel")
+                            .setNegativeBtnBackground(R.color.negativeBtn)  // for @ColorRes use setNegativeBtnBackgroundRes(R.color.colorvalue).setAnimation(Animation.POP)
                                 .isCancellable(true)
                                 .setIcon(R.drawable.ic_baseline_pan_tool_24, View.VISIBLE)
                                 .onPositiveClicked(dialog -> {
@@ -140,7 +144,7 @@ public class FertilizerHistoryFragment extends Fragment {
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorAccent))
+                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(getActivity(),R.color.positiveBtn))
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                         .addSwipeRightBackgroundColor(ContextCompat.getColor(getActivity(),R.color.green))
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)

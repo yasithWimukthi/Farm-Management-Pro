@@ -1,5 +1,6 @@
 package com.farmmanagementpro;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,10 +17,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -35,6 +38,10 @@ import com.google.firebase.storage.StorageReference;
 import com.farmmanagementpro.helper.HelperMethod;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class AddNewFertilizer extends Fragment {
 
@@ -71,7 +78,7 @@ public class AddNewFertilizer extends Fragment {
         DateEditText = view.findViewById(R.id.dateEditText);
         FertilizerNameEditText2 = view.findViewById(R.id.fertilizerNameEditText);
         quantityEditText = view.findViewById(R.id.quantityEditText);
-        additionalInfoEditText2 = view.findViewById(R.id.additionalInfoEditText);
+        additionalInfoEditText2 = view.findViewById(R.id.updateAdditionalInfoEditText);
         supplierEditText = view.findViewById(R.id.supplierEditText);
         BatchNumberEditText = view.findViewById(R.id.batchNumberEditText);
         fertilizerSaveBtn = view.findViewById(R.id.fertilizerSaveBtn);
@@ -101,6 +108,27 @@ public class AddNewFertilizer extends Fragment {
                 FertilizerImageButton.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
             }
         });
+
+        DateEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Calendar mCalendar = new GregorianCalendar();
+                mCalendar.setTime(new Date());
+
+                new DatePickerDialog(getActivity(), R.style.my_dialog_theme, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        DateEditText.setText(dayOfMonth +"-"+month+"-"+year);
+                    }
+
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                return true;
+            }
+        });
+
+
+
+
 
         fertilizerSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -244,7 +272,7 @@ public class AddNewFertilizer extends Fragment {
     }
 
     public void addFertilizerDetails(Fertilizer fertilizer){
-        db.collection("fertilizer").document(fertilizer.getBatchNo()).set(fertilizer)
+        db.collection("fertilizer").document(fertilizer.getName()).set(fertilizer)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -256,10 +284,10 @@ public class AddNewFertilizer extends Fragment {
                         BatchNumberEditText.setText("");
                         FertilizerImageButton.setImageDrawable(getResources().getDrawable(R.drawable.upload_image));
 
-                        MyAnimalsFragment myAnimalsFragment = new MyAnimalsFragment();
+                        FertilizerHistoryFragment fertilizerHistoryFragment = new FertilizerHistoryFragment();
                         getFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.container, myAnimalsFragment)
+                                .replace(R.id.container, fertilizerHistoryFragment)
                                 .commit();
                     }
                 })
