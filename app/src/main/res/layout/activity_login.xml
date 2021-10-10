@@ -7,12 +7,25 @@
     android:background="@drawable/login_bg"
     tools:context=".login">
 
+    <TextView
+        android:id="@+id/loginHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Login"
+        android:textAlignment="center"
+        android:textColor="@color/theameGreen"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="20dp"
         android:backgroundTint="@color/theameGreen"
         android:ems="10"
@@ -22,7 +35,7 @@
         android:textColorHint="@color/theameGreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/loginHeading" />
 
     <EditText
         android:id="@+id/login_password"
@@ -41,15 +54,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
+
     <Button
         android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="32dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/theameGreen"
+        android:shadowColor="@color/black"
         android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sign_up_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sign_up_btn"
+        app:layout_constraintTop_toTopOf="@+id/sign_up_btn"
+        app:layout_constraintVertical_bias="1.0"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp" />
+
+    <Button
+        android:id="@+id/sign_up_btn"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/white"
+        android:shadowColor="@color/black"
+        android:text="Sign Up"
+        android:textColor="@color/theameGreen"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/login_btn"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.100000024"
+        app:strokeColor="@color/theameGreen"
+        app:strokeWidth="2dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,111 +7,107 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/medical_card"
-        tools:ignore="UselessParent">
+        android:layout_height="150dp"
+        android:background="@drawable/medical_card">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/imageView"
+            app:cardCornerRadius="50dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
 
-            android:background="@drawable/task"
-            app:cardCornerRadius="50dp" >
+            android:layout_marginTop="20dp">
+
             <ImageView
-                android:id="@+id/taskImage"
+                android:id="@+id/machineImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/task" />
+                android:src="@drawable/tafe" />
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/animalId"
+            android:id="@+id/machineName"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:text="Animal ID"
-            android:textColor="@color/black" />
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Machine Name"
+            android:textColor="@color/black"></TextView>
 
         <TextView
-            android:id="@+id/animalIdValue"
+            android:id="@+id/machineNameValue"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="13dp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/animalId"
+            android:layout_toEndOf="@+id/machineName"
             android:text="12/12/2021"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/eventName"
+            android:id="@+id/serviceDate"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:text="Event Name"
-            android:textColor="@color/black" />
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Service Date"
+            android:textColor="@color/black"></TextView>
 
         <TextView
-            android:id="@+id/eventNameValue"
+            android:id="@+id/serviceDateValue"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="13dp"
             android:layout_marginTop="40dp"
-            android:layout_toEndOf="@+id/eventName"
+            android:layout_toEndOf="@+id/machineName"
             android:text="medicine"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/eventDate"
+            android:id="@+id/serviceType"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="60dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:text="Event Date"
-            android:textColor="@color/black" />
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Servive Type"
+            android:textColor="@color/black"></TextView>
 
         <TextView
-            android:id="@+id/eventDateValue"
+            android:id="@+id/serviceTypeValue"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="13dp"
             android:layout_marginTop="60dp"
-            android:layout_toEndOf="@+id/eventDate"
+            android:layout_toEndOf="@+id/serviceType"
             android:text="12"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/stockBull"
+            android:id="@+id/serviceCost"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="80dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:text="Stock Bull"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Service Cost"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/serviceCostValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="80dp"
+            android:layout_toEndOf="@+id/serviceCost"
+            android:text="sd"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/stockBullValue"
-            android:layout_width="120dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="80dp"
-            android:layout_toEndOf="@+id/stockBull"
-            android:text="@string/prescribed_by"
-            android:textColor="@color/black" />
-
-
-        <TextView
-            android:id="@+id/notes"
+            android:id="@+id/machineNotes"
             android:layout_width="120dp"
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
@@ -121,14 +117,17 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/notesValue"
+            android:id="@+id/machineNotesValue"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="100dp"
-            android:layout_toEndOf="@+id/notes"
-            android:text="@string/supplier"
+            android:layout_toEndOf="@+id/machineNotes"
+            android:text="s"
             android:textColor="@color/black" />
+
+        Supplier
+
     </RelativeLayout>
 
 </RelativeLayout>

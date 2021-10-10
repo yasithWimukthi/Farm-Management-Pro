@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/medical_card">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageView"
+            app:cardCornerRadius="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/sprayImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/gramoxone" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/sprayName"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Spray Name"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/sprayNameValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/sprayName"
+            android:text="Gramoxone"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/sprayQuantity"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Quantity"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/sprayQuantityValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/sprayName"
+            android:text="2"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/sprayDate"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Purchased Date"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/sprayDateValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@+id/sprayDate"
+            android:text="06.12"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/supplierName"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Supplier Name"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/supplierNameValue"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="80dp"
+            android:layout_toEndOf="@+id/supplierName"
+            android:text="Lanka Sprays"
+            android:textColor="@color/black" />
+
+        Supplier
+
+    </RelativeLayout>
+</RelativeLayout>

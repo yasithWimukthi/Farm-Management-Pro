@@ -12,4 +12,6 @@
     <color name="textColorPrimary">#212121</color>
     <color name="textColorSecondary">#757575</color>
     <color name="theameGreen">#00912B</color>
+    <color name="positiveBtn">#ff0000</color>
+    <color name="negativeBtn">#A8A7A8</color>
 </resources>
