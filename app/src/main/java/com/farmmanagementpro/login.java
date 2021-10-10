@@ -3,6 +3,7 @@ package com.farmmanagementpro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -89,7 +90,7 @@ public class login extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
