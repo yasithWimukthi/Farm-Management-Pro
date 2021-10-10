@@ -18,7 +18,7 @@
             android:id="@+id/addNewMedicine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Animal Event"
+            android:text="Update Animal Event"
             android:textAlignment="center"
             android:textColor="@color/theameGreen"
             android:layout_marginTop="10dp"

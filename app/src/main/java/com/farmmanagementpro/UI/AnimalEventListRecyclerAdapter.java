@@ -64,7 +64,7 @@ public class AnimalEventListRecyclerAdapter extends RecyclerView.Adapter<AnimalE
             super(view);
             context = ctx;
             animalId = view.findViewById(R.id.animalIdValue);
-            animalEventImage = view.findViewById(R.id.animalEventImage);
+            animalEventImage = view.findViewById(R.id.animalImage);
             eventName = view.findViewById(R.id.eventNameValue);
             eventDate = view.findViewById(R.id.eventDateValue);
             stockBull = view.findViewById(R.id.stockBullValue);
