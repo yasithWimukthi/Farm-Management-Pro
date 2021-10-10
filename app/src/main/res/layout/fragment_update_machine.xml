@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyMachineryInsert">
+    tools:context=".UpdateMachine">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,22 +16,24 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textView5"
                 android:layout_width="375dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Add Machine Service"
+                android:text="Update Machine Service"
                 android:textAlignment="center"
                 android:textColor="@color/theameGreen"
                 android:textSize="20sp" />
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="150dp"
                 android:src="@drawable/machine" />
 
             <LinearLayout
@@ -51,7 +53,7 @@
                     android:textSize="20sp" />
 
                 <AutoCompleteTextView
-                    android:id="@+id/addMachineName"
+                    android:id="@+id/addMachineName2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -106,7 +108,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="textPersonName"
                     android:textColor="@color/textColorSecondary" />
 
                 <TextView
@@ -128,7 +130,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:ems="10"
-                    android:inputType="number"
+                    android:inputType="textPersonName"
                     android:textColor="@color/textColorSecondary" />
 
                 <TextView
@@ -150,7 +152,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="textPersonName"
                     android:textColor="@color/textColorSecondary" />
 
             </LinearLayout>
@@ -158,12 +160,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="146dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/resetSBtn"
+                    android:id="@+id/resetMBtn"
+                    app:cornerRadius="5dp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="2dp"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_marginLeft="20dp"
@@ -173,13 +176,13 @@
                     android:backgroundTint="@color/theameGreen"
                     android:shadowColor="@color/black"
                     android:text="Reset"
-                    android:textColor="@color/white"
-                    app:cornerRadius="5dp"
-                    app:strokeColor="@color/white"
-                    app:strokeWidth="2dp" />
+                    android:textColor="@color/white" />
 
                 <Button
-                    android:id="@+id/saveBtn"
+                    android:id="@+id/updateMBtn"
+                    app:cornerRadius="5dp"
+                    app:strokeColor="@color/theameGreen"
+                    app:strokeWidth="2dp"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_marginLeft="20dp"
@@ -189,10 +192,7 @@
                     android:backgroundTint="@color/white"
                     android:shadowColor="@color/black"
                     android:text="Save"
-                    android:textColor="@color/theameGreen"
-                    app:cornerRadius="5dp"
-                    app:strokeColor="@color/theameGreen"
-                    app:strokeWidth="2dp" />
+                    android:textColor="@color/theameGreen" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

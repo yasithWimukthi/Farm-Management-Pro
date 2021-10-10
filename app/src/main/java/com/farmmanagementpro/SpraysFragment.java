@@ -1,6 +1,7 @@
 package com.farmmanagementpro;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sdsmdg.tastytoast.TastyToast;
+import com.shashank.sony.fancydialoglib.Animation;
+import com.shashank.sony.fancydialoglib.FancyAlertDialog;
+import androidx.annotation.ColorRes;
+import android.annotation.SuppressLint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +73,8 @@ public class SpraysFragment extends Fragment {
                 return false;
             }
 
+            @SuppressLint({"SupportAnnotationUsage", "ResourceAsColor"})
+            @ColorRes
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
@@ -76,9 +83,33 @@ public class SpraysFragment extends Fragment {
 
                 switch (direction) {
                     case ItemTouchHelper.LEFT:
-                        spraysList.remove(position);
-                        spraysListAdapter.notifyItemRemoved(position);
-                        removeSpray(sprayName);
+                        FancyAlertDialog.Builder
+                                .with(getActivity())
+                                .setTitle("Warning !")
+                                .setBackgroundColor(Color.parseColor("#ff0000"))  // for @ColorRes use setBackgroundColorRes(R.color.colorvalue)
+                                .setMessage("Do you want to delete this spray ?")
+                                .setNegativeBtnText("Delete")
+                                .setPositiveBtnBackground(Color.parseColor("#F57C00"))  // for @ColorRes use setPositiveBtnBackgroundRes(R.color.colorvalue)
+                                .setPositiveBtnText("Cancel")
+                                .setNegativeBtnBackground(R.color.negativeBtn)  // for @ColorRes use setNegativeBtnBackgroundRes(R.color.colorvalue)
+                                .setAnimation(Animation.POP)
+                                .isCancellable(true)
+                                .setIcon(R.drawable.ic_baseline_pan_tool_24, View.VISIBLE)
+                                .onPositiveClicked(dialog -> {
+                                    SpraysFragment spraysFragment = new SpraysFragment();
+                                    getFragmentManager()
+                                            .beginTransaction()
+                                            .replace(R.id.container, spraysFragment)
+                                            .commit();
+                                })
+                                .onNegativeClicked(dialog -> {
+                                    spraysList.remove(position);
+                                    spraysListAdapter.notifyItemRemoved(position);
+                                    removeSpray(sprayName);
+                                })
+                                .build()
+                                .show();
+
                         break;
                     case ItemTouchHelper.RIGHT:
                         UpdateSprayFragment updateSprayFragment = new UpdateSprayFragment();
@@ -96,7 +127,7 @@ public class SpraysFragment extends Fragment {
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(getActivity(),R.color.colorAccent))
+                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(getActivity(),R.color.positiveBtn))
                         .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_24)
                         .addSwipeRightBackgroundColor(ContextCompat.getColor(getActivity(),R.color.green))
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24)

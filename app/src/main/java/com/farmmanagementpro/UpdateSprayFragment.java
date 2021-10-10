@@ -87,7 +87,7 @@ public class UpdateSprayFragment extends Fragment {
         addSpraySupplier = view.findViewById(R.id.addSpraySupplier);
         addSprayInformation = view.findViewById(R.id.addSprayInformation);
         updateSBtn = view.findViewById(R.id.updateSBtn);
-        resetSBtn = view.findViewById(R.id.resetBtn);
+        resetSBtn = view.findViewById(R.id.resetMBtn);
         sprayImageBtn = view.findViewById(R.id.uploadImageBtn);
 
         storageReference = FirebaseStorage.getInstance().getReference();
