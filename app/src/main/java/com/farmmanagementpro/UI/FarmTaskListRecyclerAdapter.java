@@ -67,7 +67,7 @@ public class FarmTaskListRecyclerAdapter extends RecyclerView.Adapter<FarmTaskLi
             farmTaskImage = view.findViewById(R.id.fertilizerImage);
             taskStatus = view.findViewById(R.id.fertilizerDate);
             taskName = view.findViewById(R.id.fertilizerNameValue);
-            description = view.findViewById(R.id.descriptionValue);
+            description = view.findViewById(R.id.supplierValue);
 
         }
     }

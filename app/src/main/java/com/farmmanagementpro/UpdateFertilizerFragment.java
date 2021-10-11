@@ -88,7 +88,7 @@ public class UpdateFertilizerFragment extends Fragment {
         additionalInfoEditText = view.findViewById(R.id.updateAdditionalInfoEditText);
         supplierEditText = view.findViewById(R.id.supplierEditText);
         BatchNumberEditText = view.findViewById(R.id.batchNumberEditText);
-        fertilizerUpdateBtn = view.findViewById(R.id.updateFertilizerBtn);
+        fertilizerUpdateBtn = view.findViewById(R.id.fertilizerSaveBtn);
         fertilizerResetBtn = view.findViewById(R.id.fertilizerResetBtn);
         FertilizerImageButton = view.findViewById(R.id.fertilizerImageButton);
 

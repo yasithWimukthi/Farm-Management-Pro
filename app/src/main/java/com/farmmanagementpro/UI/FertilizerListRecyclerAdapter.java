@@ -77,7 +77,8 @@ public class FertilizerListRecyclerAdapter extends RecyclerView.Adapter<Fertiliz
             date = view.findViewById(R.id.fertilizerDate);
             quantity = view.findViewById(R.id.fertilizerQty);
             supplier = view.findViewById(R.id.supplierValue);
-            batchNo = view.findViewById(R.id.batchNoValue);
+            batchNo = view.findViewById(R.id.batchNumberValue);
+
         }
     }
 }

@@ -150,7 +150,16 @@ public class AddNewFarmTask extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        taskDateEditText.setText("");
+                        TaskNameEditText.setText("");
+                        taskStatusEditText.setText("");
+                        descriptionEditText.setText("");
 
+                        FarmTasksFragment farmTasksFragment = new FarmTasksFragment();
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.container, farmTasksFragment)
+                                .commit();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
